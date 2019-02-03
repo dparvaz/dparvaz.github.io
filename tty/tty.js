@@ -18,7 +18,7 @@ function setup() {
 function draw() {
  
   background(bg);
-//  segDisp.show();
+  segDisp.show();
 }  
 
 function keyPressed() {
