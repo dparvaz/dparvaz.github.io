@@ -8,7 +8,7 @@ function setup() {
     cnv = createCanvas(568, 304);
     cnv.parent('thetty');
 
-    bg = loadImage("file:///home/dparvaz/Documents/Sites/tty/images/ttydisp.jpg");
+    bg = loadImage("images/ttydisp.jpg");
     segDisp = new Display(70,51);
     eliza = new Shrink();
     inSession = false;
