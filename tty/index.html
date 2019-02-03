@@ -1,0 +1,81 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script language="javascript" type="text/javascript" src="p5.js"></script>
+  <script language="javascript" type="text/javascript" src="tty.js"></script>
+  <script language="javascript" type="text/javascript" src="display.js"></script>
+  <script language="javascript" type="text/javascript" src="shrink.js"></script>
+  <title>TTY Simulator</title>
+  <style>
+  body {
+	 background-color: GhostWhite;
+  }
+
+  h1 {
+	 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	 font-size: 30px;
+	 font-style: normal;
+	 font-weight: bold;
+  }
+
+  p {
+	 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	 font-size: 14px;
+	 font-style: normal;
+	 font-weight: normal;
+  }
+  div#text {
+	 position: absolute;
+     width: 400px;
+     top: 120px;
+     left: 30px;
+	 border: 0;
+  } 
+
+  div#thetty {
+	 position: absolute;
+     top: 230px;
+     right: 30px;
+     width: 568px;
+     height: 320px;
+     border: 0;
+  }
+
+  div#footer {
+	  position: absolute;
+	  bottom: 20px;
+	  left: 50px;
+	  right: 50px;
+	  border: 0; 
+	  text-align: center;
+  }
+
+  </style>
+</head>
+
+<body>
+   <div id="text">
+   <h1>TTY Simulator</h1>
+   <p>Before the widespread availablility of 
+      <a href="https://en.wikipedia.org/wiki/Videophone#Sign_language_communications_via_videophones">
+	  videophones</a> (and in 
+      much of the world, they still are not), terminals called <strong>TTYs</strong>
+	  (the abbreviated form of the word <em>teletype</em>) were in use (also called 
+	  "Telecommunication Devices for the Deaf" or <em>TDDs</em> to avoid infringing
+	  on the trademark of the <a href="https://en.wikipedia.org/wiki/Teletype_Corporation">
+	  Teletype Corporation</a>, but the term did not have widespread support in the
+	  <a href="https://en.wikipedia.org/wiki/Deaf_culture">Deaf</a> Community). They allowed 
+	  &mdash; before the pervasive availability of text pagers, 
+	  SMS, or online services &mdash; to send text over telephone lines.</p>
+   <p>Early TTYs were modified govenment-suplus teletypes (such as the <a 
+      href="https://en.wikipedia.org/wiki/Teletype_Model_33">KSR-33</a>). Soon after, 
+      more portable devices were manufactured expressly for use by the Deaf.</p>
+   <p><strong>Directions:</strong>Click anywhere on the virtual TTY to the right to begin. 
+       When you are done with your turn, add a space after the GA or the SK.</p>
+   </div>
+   <div id="thetty"></div>
+   <div id="footer">
+   <p>TTY Code and design by <a href="http://www.danparvaz.com">Dan Parvaz</a>; all code open source. <a href="https://en.wikipedia.org/wiki/ELIZA">ELIZA</a> originally conceived and implemeted by Joseph Weizenbaum.</p>
+   </div>
+</body>
+</html>
