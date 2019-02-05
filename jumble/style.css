@@ -1,0 +1,72 @@
+.container {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: 1fr 3fr 1fr;
+	grid-gap: 20px;
+}
+
+h1 {
+	font-family: "Fjalla One", sans-serif;
+	font-size: 30px;
+	font-style: normal;
+	font-weight: bold;
+}
+
+h2 {
+	font-family: "Fjalla One", sans-serif;
+	font-size: 22px;
+	font-style: normal;
+	font-weight: bold;
+}
+
+p {
+	font-family: 'Rokitt', serif;
+	font-size: 18px;
+}
+
+pre {
+	font-family: 'Rokitt', serif;
+	grid-column: span 3;
+	font-size: 22px;
+	line-height: 30px;
+	background-color: #eee;
+	padding: 15px;
+}
+
+form {
+	font-family: 'Rokitt', serif;
+	grid-column-start: 4;
+ 	grid-column: span 3;
+	font-size: 22px;
+	line-height: 30px;
+}
+
+.button {
+  font-family: "Fjalla One", sans-serif;
+  background-color: #d4786a;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+	background-color: #333;
+}
+
+header {
+	background-color: #ffaaaa;
+	grid-column: span 6;
+	text-align: center;  
+}
+
+footer {
+	background-color: #f8e9a6;
+ 	grid-column: span 6;
+ 	text-align: center;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reading Scramabled Words</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Rokkitt|Fjalla+One" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+	<header>
+		<h1>Reading Scramabled Words</h1>
+		<p>Everyone has seen the meme that reads something like <em>It deosn't mttaer in waht oredr the ltteers in a wrod are, the olny iprmoetnt tihng is taht the frist and lsat ltteer be at the rghit pclae.</em>. Sometimes you're even told that reading jumbled text like that is a sign of intelligence. But is it?</p>
+	</header>
+	<pre id="poem">
+Remember me when I am gone away, 
+   Gone far away into the silent land; 
+   When you can no more hold me by the hand, 
+Nor I half turn to go yet turning stay. 
+Remember me when no more day by day 
+   You tell me of our future that you planned: 
+   Only remember me; you understand 
+It will be late to counsel then or pray. 
+Yet if you should forget me for a while 
+   And afterwards remember, do not grieve: 
+   For if the darkness and corruption leave 
+   A vestige of the thoughts that once I had, 
+Better by far you should forget and smile 
+   Than that you should remember and be sad.</pre>
+	<form>
+		<p>For one thing, does it matter <em>how</em> the words are jumbled? Below, you can control the way the text is altered. You can choose to simply sort all the middle letters in alphabetical order, reverse them, or randomly switch letters around. Try them and see if it makes a difference!</p>
+
+		<p>For more discussion on jumbled text, look at this <a href="https://www.mnn.com/lifestyle/arts-culture/stories/why-your-brain-can-read-jumbled-letters" target="_newpage">article</a></p>
+
+		<h2>Try it out!</h2>
+
+		<input type="radio" name="action" value="reverse">Reverse<br>
+		<input type="radio" name="action" value="sorted">Sorted<br>
+		<input type="radio" name="action" value="random" checked>Randomized<br>
+		<input type="button" class="button" value="Jumble!" onclick="scramble()">
+		<input type="button" class="button" value="Reset" onclick="backtonormal()">
+	</form>
+	<footer>
+		<p>Page and coding by <a href="https://danparvaz.com">Dan Parvaz</a>. Poem by Christina Georgina Rossetti.</p>
+	</footer>
+</div>
+<script type="text/javascript" src="jumble.js"></script>
+</body>
+</html>
