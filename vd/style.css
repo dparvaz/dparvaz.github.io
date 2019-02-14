@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Fahkwang');
+
+html, body{
+  background: #ffcccc;
+  height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+  width: 100vw;
+}
+
+.valentine{
+  max-width: 1000px;
+  min-width: 300px;
+  min-height: 650px;
+}
+
+.castle{
+  min-height: 650px;
+  width: 100vw;
+}
+
+.mario-left{
+  animation: mario 5s ease-in-out;
+}
+
+.princess-right{
+  animation: princess 5s ease-in-out;
+}
+
+#flag{
+  animation: flagUp 10s ease-out;
+}
+#cloud001{
+  animation: clouds 9s ease-in-out infinite;
+}
+
+#cloud002_1_{
+  animation: clouds2 8s ease-in-out infinite;
+}
+#cloud004{
+  animation: clouds 6s ease-in-out infinite;
+}
+#cloud003_1_, #cloud005{
+  animation: clouds2 7s ease-in-out infinite;
+}
+
+#openRight{
+  animation: openRight 8s ease-in-out;
+}
+#openLeft{
+  animation: openLeft 8s ease-in-out;
+}
+
+#closedRight{
+  animation: closeRight 8s ease-in-out;
+}
+#closedLeft{
+  animation: closeLeft 8s ease-in-out;
+}
+
+@keyframes play {
+	100% { background-position: 1000px; }
+}
+
+@keyframes mario{
+  0% {
+    transform: translateX(-385px);
+  }
+  100% {
+    transform: translateX(1px);
+  }
+}
+
+@keyframes princess{
+  0% {transform: translateX(385px)}
+  100% {transform: translateX(0)}
+}
+
+@keyframes flagUp{
+  0% {transform: translateY(300px)}
+  75% {transform: translateY(300px)}
+  100% {transform: translateY(0)}
+}
+
+@keyframes clouds {
+  0% {transform: translateY(0)}
+  50% {transform: translateY(6px)}
+  100% {transform: translateY(0)}
+}
+
+@keyframes clouds2 {
+  0% {transform: translateY(0)}
+  50% {transform: translateY(-15px)}
+  100% {transform: translateY(0)}
+}
+
+@keyframes closeRight{
+  0% {transform: translateX(0); opacity: 0}
+  25%{transform: translateX(0)}
+  35%{transform: translateX(0)}
+  50% {transform: translateX(45px);opacity: 0}
+  65% {transform: translateX(45px);opacity: 1}
+  100% {transform: translateX(0)}
+}
+
+@keyframes closeLeft{
+  0% {transform: translateX(0); opacity: 0}
+  25%{transform: translateX(0)}
+  35%{transform: translateX(0)}
+  50% {transform: translateX(-45px);opacity: 0}
+  65% {transform: translateX(-45px);opacity: 1}
+  100% {transform: translateX(0)}
+}
+
+@keyframes openRight{
+  0% {transform: translateX(0); opacity:1}
+  25%{transform: translateX(0)}
+  35%{transform: translateX(0)}
+  50% {transform: translateX(45px);opacity:1}
+  65% {transform: translateX(45px)}
+  100% {transform: translateX(0); opacity:0}
+}
+
+@keyframes openLeft{
+  0% {transform: translateX(0); opacity:1}
+  25%{transform: translateX(0)}
+  35%{transform: translateX(0)}
+  50% {transform: translateX(-45px);opacity:1}
+  65% {transform: translateX(-45px)}
+  100% {transform: translateX(0); opacity:0}
+}
+
+h1{
+  text-align:center;
+  color: #f5f5f5;
+  font-family: 'Fahkwang', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-shadow: -2px -2px 2px black,
+               -2px  2px 2px black,
+                2px -2px 2px black,
+                2px  2px 2px black;
+}
