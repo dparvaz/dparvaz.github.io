@@ -3,27 +3,28 @@ let side;
 let time;
 
 function setup() {
-  createCanvas(500, 500);
-  face = [ 'השעהארבעה', 
-           'עשריםוחמש',
-           'לאחתשתיםי',
+  
+  const dimension = floor(min (windowWidth, windowHeight) * .7);
+  
+  
+  createCanvas(dimension, dimension);
+  
+  face = [ 'עשריםרבעו', 
+           'חמישהעשרה',
+           'לאחתשתיים',
            'עשרהששלוש',
            'ארבעסחמשל',
            'כשבעשמונה',
            'תשהפוחציק',
-           'ורבעשריםנ',
-           'וחמשטדקות' ];
+           'ורבעשריםו',
+           'חמישהעשרה' ];
   
-  side = floor (width/9);
-  time = [16, 17, 18, 19, 32, 33, 34, 35, 72, 73, 74, 75];
+  side = floor (dimension/9);
+  
   colorMode (HSB, 100);
 }
 
 function draw() {
-  
-  time = [16, 17, 18, 19];
-  
-  
    
   let m = round(minute() / 5) * 5;
   let h = ( hour() + (m > 31) ) % 12;
@@ -32,13 +33,13 @@ function draw() {
   
   switch (h) {
     case 0:
-      hrs = [32, 33, 34, 35, 46, 47, 48, 49];
+      hrs = [31, 32, 33, 34, 35, 46, 47, 48, 49];
       break;
     case 1: 
       hrs = [36, 37, 38];
       break;
     case 2: 
-      hrs = [32, 33, 34, 35];
+      hrs = [31, 32, 33, 34, 35];
       break;
     case 3:
       hrs = [41, 42, 43, 44];
@@ -73,45 +74,43 @@ function draw() {
   
   switch(m) {
     case 5:
-      mins = [96, 97, 98, 99];
+      mins = [95, 96, 97, 98, 99, 89];
       break;
     case 10:
-      mins = [84, 85, 86, 89];
+      mins = [91, 92, 93, 94, 89];
       break;
     case 15:
       mins = [86, 87, 88, 89];
       break;
     case 20:
-      mins = [96, 97, 98];
+      mins = [82, 83, 84, 85, 86, 89] ;
       break;
     case 25:
-      mins = [82, 83, 84, 85, 86, 89, 96, 97, 98, 99];
+      mins = [81, 82, 83, 84, 85, 86, 89, 95, 96, 97, 98, 99];
       break;
     case 30:
       mins = [72, 73, 74, 75];
       break;
     case 35:
-      mins = [21, 22, 23, 24, 25, 26, 27, 28, 29, 39];
+      mins = [15, 16, 17, 18, 19, 11, 25, 26, 27, 28, 29, 39];
       break;
     case 40:
-      mins = [25, 26, 27, 28, 29, 39];
+      mins = [15, 16, 17, 18, 19, 39];
       break;
     case 45:
       mins = [12, 13, 14, 39];
       break;
     case 50:
-      mins = [27, 282, 29, 39];
+      mins = [21, 22, 23, 24, 39];
       break;
     case 55:
-      mins = [21, 22, 23, 39];
+      mins = [25, 26, 27, 28, 29, 39];
       break;
     default:
       mins = [];
   }
   
-  time = time.concat(hrs).concat(mins);
-  if (m % 15 != 0 && m < 30)  { time = time.concat([91, 92, 93, 94]); }
-  
+  time = hrs.concat(mins);
   
   background(0);
   textAlign(CENTER);
