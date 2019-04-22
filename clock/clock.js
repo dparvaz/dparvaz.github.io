@@ -128,5 +128,9 @@ function draw() {
       text(line[i], (i+.5) * side, (j+.8) * side);
     }
   }
-  
+}
+
+
+function windowResized() {
+  setup();
 }
