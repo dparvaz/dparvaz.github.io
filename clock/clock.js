@@ -123,7 +123,7 @@ function draw() {
       if (time.indexOf(key) > -1) {
         fill(i*7, 30+ j*15, 100);
       } else {
-        fill(0, 0, 50);
+        fill(0, 0, 40);
       }
       text(line[i], (i+.5) * side, (j+.8) * side);
     }
