@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+@font-face {
+    font-family: 'Mekorot';
+    src: url('./Mekorot-Rashi.ttf');
+}
+
+@font-face {
+    font-family: 'Shlomo';
+    src: url('./ShlomoStam.ttf');
+}
+
+@font-face {
+    font-family: 'Isaiah';
+    src: url('./ISAIAH.TTF');
+}
+
+@font-face {
+    font-family: 'Mesha';
+    src: url('./MESHA.TTF');
+}
+
+@font-face {
+    font-family: 'Proto';
+    src: url('./PROTOCN.TTF');
+}
+
+html {
+	font-size: 2.5vh;
+	color: black;
+}
+
+body {
+	background-color: ivory;
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	counter-reset: verse-counter
+}
+
+p {
+	text-align: justify;
+	max-width:  35rem;
+	line-height: 1.5rem;
+	font-size: 1rem;
+	margin-right: 5rem;
+	list-style: none;
+}
+
+.plain {
+	font-family: Rubik;
+}
+
+.rashi {
+	font-family: Mekorot;
+}
+
+.stam {
+	font-family: Shlomo;
+}
+
+.isaiah {
+	font-family: Isaiah;
+}
+
+.paleo {
+	font-family: Mesha;
+}
+
+.proto {
+	font-family: Proto;
+}
+
+span {
+	display: inline-block;
+}
+
+p.latverse {
+  display: list-item;
+}
+
+p.latverse::before {
+  content: counter(verse-counter);
+  counter-increment: verse-counter;
+  font-size: .6rem;
+  vertical-align: 20%;
+  padding: .5rem;
+  font-family: Rubik;
+  color: slategrey;
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+p.hebverse {
+  display: list-item;
+}
+
+p.hebverse::before {
+  content: counter(verse-counter, hebrew);
+  counter-increment: verse-counter;
+  font-size: .6rem;
+  vertical-align: 20%;
+  padding: .5rem;
+  font-family: Rubik;
+  color: slategrey;
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+h1 {
+  padding-right: 5rem;
+  font-family: Rubik;
+}
+
+b {
+  font-size: .6rem;
+  vertical-align: 20%;
+  padding: .5rem;
+  font-family: Rubik;
+  color: slategrey;
+}
+
+big {
+	font-size: 120%;
+	vertical-align: -7%;
+}
+
+small {
+	font-size: 80%;
+	vertical-align: 12%;
+	font-weight: bold;
+}
+
+.main {
+	top: 3rem;
+	padding: 0 2.5rem;
+	position: relative;
+	margin-left: 10rem;
+	text-align: right;
+	direction: rtl;
+	margin-right: 10rem;
+}
+
+header {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 3rem;
+	background-color: firebrick;
+	position: fixed;
+	z-index: 2;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.button {
+	height: 80%;
+	width: auto;
+	padding-right: 1rem;
+  padding-left: 1rem;
+	z-index: 3;
+	cursor: pointer;
+}
+
+.button:hover {
+	opacity: .6;
+}
+
+footer {
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2rem;
+	background-color: slategrey;
+	position: fixed;
+	z-index: 2
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+/**************************\
+  Basic Modal Styles
+\**************************/
+
+.modal {
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 500px;
+  max-height: 100vh;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: white;
+  box-sizing: border-box;
+  padding-left: 1rem;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+}
+
+.modal__header .modal__close:before { content: "\2715"; }
+
+.modal__content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: rgba(0,0,0,.8);
+}
+
+.modal__btn {
+  font-size: .875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: #e6e6e6;
+  color: rgba(0,0,0,.8);
+  border-radius: .25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform .25s ease-out;
+  transition: transform .25s ease-out;
+  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+}
+
+.modal__btn:focus, .modal__btn:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.modal__btn-primary {
+  background-color: #00449e;
+  color: #fff;
+}
+
+
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
+}
+
+@media screen and (max-width: 1000px) {
+  .main {
+    margin-left: 0;
+    margin-right: 0;
+    width: 95%;
+  }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<title>Tanakh תנ"ך</title>
+</head>
+<body>
+	<header>
+		<img class="button" src="images/question.png" onclick="questiondialog();">
+		<img class="button" src="images/papyrus.png"  onclick="bookdialog();">
+		<img class="button" src="images/settings.png" onclick="settingsdialog();">
+	</header>
+	<div class="main" id="main">
+	</div>
+	<footer>
+		<img class="button" src="images/left-arrow.png"  onclick="advance(1);">
+		<img class="button" src="images/right-arrow.png" onclick="advance(-1);">
+	</footer>
+	<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+	      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+	        <header class="modal__header">
+	          <h2 class="modal__title" id="modal-1-title">
+	            Display settings
+	          </h2>
+	          <!-- <button class="modal__close" aria-label="Close modal" data-micromodal-close></button> -->
+	        </header>
+	        <main class="modal__content" id="modal-1-content">
+	        	<p>
+	        		Use modern punctuation: <input type="checkbox" id="punct" checked> <br>
+	        		Number verses in Hebrew: <input type="checkbox" id="hebrew" checked> <br>
+	        		List verses <input type="radio" name="para" id="parano" checked>separately <input type="radio" name="para" id="parayes">by paragraph<br>
+	        		Script style: 
+	        		<select id="style" size="1">
+					  <option>Plain</option>
+					  <option>STaM</option>
+					  <option>Isaiah</option>
+					  <option>Rashi</option>
+					  <option>Paleo-Hebrew</option>
+					  <option>Proto-Caananite</option>
+					</select>
+  
+	        	</p>
+	        </main>
+	        <footer class="modal__footer">
+	          <button class="modal__btn modal__btn-primary"  data-micromodal-close data-micromodal-trigger="modal-1" aria-label="Change the settings">Ok</button>
+	          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window" onclick="MicroModal.close('modal-1');">Cancel</button>
+	        </footer>
+	      </div>
+	    </div>
+  </div>
+
+  <div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
+	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+	      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+	        <header class="modal__header">
+	          <h2 class="modal__title" id="modal-1-title">
+	            Choose passage
+	          </h2>
+	         <!--  <button class="modal__close" aria-label="Close modal" data-micromodal-close></button> -->
+	        </header>
+	        <main class="modal__content" id="modal-1-content">
+	        	<p>
+	        		Book: 
+	        		<select id="book" size="1" onchange="setchapters(this.selectedIndex);">
+					  	<option>Genesis</option>
+						<option>Exodus</option>
+						<option>Leviticus</option>
+						<option>Numbers</option>
+						<option>Deuteronomy</option>
+						<option>Joshua</option>
+						<option>Judges</option>
+						<option>I Samuel</option>
+						<option>II Samuel</option>
+						<option>I Kings</option>
+						<option>II Kings</option>
+						<option>Isaiah</option>
+						<option>Jeremiah</option>
+						<option>Ezekiel</option>
+						<option>Hosea</option>
+						<option>Joel</option>
+						<option>Amos</option>
+						<option>Obadiah</option>
+						<option>Jonah</option>
+						<option>Micah</option>
+						<option>Nahum</option>
+						<option>Habakkuk</option>
+						<option>Zephaniah</option>
+						<option>Haggai</option>
+						<option>Zechariah</option>
+						<option>Malachi</option>
+						<option>I Chronicles</option>
+						<option>II Chronicles</option>
+						<option>Psalms</option>
+						<option>Job</option>
+						<option>Proverbs</option>
+						<option>Ruth</option>
+						<option>Song of Songs</option>
+						<option>Ecclesiastes</option>
+						<option>Lamentations</option>
+						<option>Esther</option>
+						<option>Daniel</option>
+						<option>Ezra</option>
+						<option>Nehemiah</option>
+					</select>
+					Chapter: 
+					<select id="chap" size="1">
+					</select>
+  
+	        	</p>
+	        </main>
+	        <footer class="modal__footer">
+	          <button class="modal__btn modal__btn-primary"  data-micromodal-close data-micromodal-trigger="modal-2" aria-label="Change to the book and chapter selected">Ok</button>
+	          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window" onclick="MicroModal.close('modal-2');">Cancel</button>
+	        </footer>
+	      </div>
+	    </div>
+  </div>
+
+  	<div class="modal micromodal-slide" id="modal-3" aria-hidden="true">
+	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+	      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-3-title">
+	        <header class="modal__header">
+	          <h2 class="modal__title" id="modal-3-title">
+	            About TaNaKh
+	          </h2>
+	          <!-- <button class="modal__close" aria-label="Close modal" data-micromodal-close></button> -->
+	        </header>
+	        <main class="modal__content" id="modal-1-content">
+	        	<p>
+	        		This is just a simple Bible reader that allows you to see the text of the Hebrew Bible in a number of scripts.
+	        	</p>
+	        	<p>
+	        		Consonantal Hebrew text counrtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
+	        	</p>
+	        	<p> 
+	        		Icons from <a href="https://www.flaticon.com">FlatIcon</a>.
+	        	</p>
+	        	<p>
+	        		Design and coding can all be blamed on <a href="https://danparvaz.com">Dan Parvaz</a>.
+	        	</p>
+	        </main>
+	        <footer class="modal__footer">
+	          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window" onclick="MicroModal.close('modal-3');">Cancel</button>
+	        </footer>
+	      </div>
+	    </div>
+  </div>
+
+	<script type="text/javascript" src="https://unpkg.com/micromodal/dist/micromodal.min.js
+"></script>
+	<script type="text/javascript" src="script/tnk.js"></script>
+</body>
+</html>
