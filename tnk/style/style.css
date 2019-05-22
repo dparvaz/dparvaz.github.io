@@ -26,7 +26,7 @@
 }
 
 html {
-	font-size: 2.5vh;
+	font-size: 2.75vh;
 	color: black;
 }
 
@@ -133,7 +133,6 @@ small {
 
 .main {
 	top: 3rem;
-	padding: 0 2.5rem;
 	position: relative;
 	margin-left: 10rem;
 	text-align: right;
@@ -336,10 +335,64 @@ footer {
   will-change: transform;
 }
 
+
+
+/* *************************
+   * Mobile user interface *
+   ************************* */
+
+.panel {
+  padding: 0 18px;
+  background-color: ghostwhite;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  text-align: left;
+  direction: ltr;
+}
+
+
+.panel__title {
+  height: 1.5rem;
+  background-color: firebrick;
+  color: white;
+  padding-left: 1rem;
+}
+
+.panel__footer {
+  height: 1.5rem;
+  background-color: slategrey;
+  padding-left: 1rem;
+}
+
+.okbutton {
+  background-color: #00449e;
+  color: #fff;
+  height: 100%;
+  width: 5rem;
+  font-size: 1rem;
+}
+
+.closebutton {
+  background-color: #e6e6e6;
+  color: rgba(0,0,0,.8);  
+  height: 100%;
+  width: 7rem;
+  font-size: 1rem;
+}
+
+
 @media screen and (max-width: 1000px) {
   .main {
     margin-left: 0;
     margin-right: 0;
-    width: 95%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+
+  p {
+    width:  100%;
+    margin-right: 0;
   }
 }
