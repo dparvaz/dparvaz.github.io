@@ -316,7 +316,7 @@ function desktopsetup() {
 	helpdlg.innerHTML = helpscreen;
 
 	MicroModal.init({
-		onClose: modal => updatedisplay(),
+		onClose: modal => closepanels(true),
 		disableFocus: true,
 		debugMode: true
 	});
