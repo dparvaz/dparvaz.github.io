@@ -4,7 +4,7 @@ const helpscreen = `	        	<p>
 	        		This is just a simple Bible reader that allows you to see the text of the Hebrew Bible in a number of scripts.
 	        	</p>
 	        	<p>
-	        		Consonantal Hebrew text counrtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
+	        		Consonantal Hebrew text courtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
 	        	</p>
 	        	<p> 
 	        		Icons from <a href="https://www.flaticon.com">FlatIcon</a>.
