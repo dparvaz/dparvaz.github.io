@@ -4,7 +4,7 @@ const helpscreen = `	        	<p>
 	        		This is just a simple Bible reader that allows you to see the text of the Hebrew Bible in a number of scripts.
 	        	</p>
 	        	<p>
-	        		Consonantal Hebrew text courtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
+	        		Consonantal Hebrew text counrtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
 	        	</p>
 	        	<p> 
 	        		Icons from <a href="https://www.flaticon.com">FlatIcon</a>.
@@ -70,6 +70,7 @@ const settingscreen = `<p>
 	        		<select id="style" size="1">
 					  <option>Plain</option>
 					  <option>STaM</option>
+					  <option>Cursive</option>
 					  <option>Isaiah</option>
 					  <option>Rashi</option>
 					  <option>Paleo-Hebrew</option>
@@ -86,7 +87,7 @@ let nopunct = false;
 let hebrew = true;
 
 function updatedisplay() {
-	const styles = ['plain', 'stam', 'isaiah', 'rashi', 'paleo', 'proto'];
+	const styles = ['plain', 'stam', 'cursive', 'isaiah', 'rashi', 'paleo', 'proto'];
 
 	const punctbox = document.getElementById('punct');
 	const heebox = document.getElementById('hebrew');
@@ -200,7 +201,6 @@ function settingsdialog() {
 		panelshow('settings-mobile');
 	} else {
 		MicroModal.show('settings-desktop');
-		// MicroModal.close('modal-2');
 	}
 }
 
@@ -211,7 +211,6 @@ function bookdialog() {
 		scroll(0,0);
 		panelshow('book-mobile');
 	} else {
-		// MicroModal.close('modal-1');
 		MicroModal.show('book-desktop');
 	}
 }
@@ -222,19 +221,13 @@ function questiondialog() {
 		scroll(0,0);
 		panelshow('help-mobile');
 	} else {
-		// MicroModal.close('modal-1');
 		MicroModal.show('help-desktop');
 	}
 }
 
 function panelshow(dlgname) {
 	const panel = document.getElementById(dlgname);
-
-	// if (panel.style.maxHeight){
- //      panel.style.maxHeight = null;
- //    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    // } 
+    panel.style.maxHeight = panel.scrollHeight + "px";
 }
 
 function closepanels(update=false) {
@@ -316,8 +309,7 @@ function desktopsetup() {
 	helpdlg.innerHTML = helpscreen;
 
 	MicroModal.init({
-		onClose: modal => { 
-			closepanels(true);
+		onClose: modal => { closepanels(true);
 		},
 		disableFocus: true,
 		debugMode: true
