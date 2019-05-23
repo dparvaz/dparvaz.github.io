@@ -25,6 +25,11 @@
     src: url('./PROTOCN.TTF');
 }
 
+@font-face {
+    font-family: 'KtavYad';
+    src: url('./KtavYadCLM-MediumItalic.ttf');
+}
+
 html {
 	font-size: 2.75vh;
 	color: black;
@@ -69,6 +74,10 @@ p {
 
 .proto {
 	font-family: Proto;
+}
+
+.cursive {
+  font-family: KtavYad;
 }
 
 span {
