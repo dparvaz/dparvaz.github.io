@@ -4,7 +4,7 @@ const helpscreen = `	        	<p>
 	        		This is just a simple Bible reader that allows you to see the text of the Hebrew Bible in a number of scripts.
 	        	</p>
 	        	<p>
-	        		Consonantal Hebrew text counrtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
+	        		Hebrew text with vowels courtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
 	        	</p>
 	        	<p> 
 	        		Icons from <a href="https://www.flaticon.com">FlatIcon</a>.
@@ -65,6 +65,7 @@ const helpscreen = `	        	<p>
 const settingscreen = `<p>
 	        		Use modern punctuation: <input type="checkbox" id="punct" checked> <br>
 	        		Number verses in Hebrew: <input type="checkbox" id="hebrew" checked> <br>
+	        		Display nekudot: <input type="checkbox" id="nekudot" checked> <br>
 	        		List verses <input type="radio" name="para" id="parano" checked>separately <input type="radio" name="para" id="parayes">by paragraph<br>
 	        		Script style: 
 	        		<select id="style" size="1">
@@ -82,6 +83,7 @@ const settingscreen = `<p>
 let book = 0;
 let chap = 1;
 let style = 'plain';
+let nekudot = true;
 let paragraph = false;
 let nopunct = false;
 let hebrew = true;
@@ -90,6 +92,7 @@ function updatedisplay() {
 	const styles = ['plain', 'stam', 'cursive', 'isaiah', 'rashi', 'paleo', 'proto'];
 
 	const punctbox = document.getElementById('punct');
+	const nekubox = document.getElementById('nekudot');
 	const heebox = document.getElementById('hebrew');
 	const parabox = document.getElementById('parayes');
 	const styleidx = document.getElementById('style').selectedIndex;
@@ -99,6 +102,7 @@ function updatedisplay() {
 	nopunct = !punctbox.checked;
 	hebrew = heebox.checked;
 	paragraph = parabox.checked;
+	nekudot = nekubox.checked;
 	style = styles[styleidx];
 	book = bookidx;
 	chap = chapsidx + 1;
@@ -111,9 +115,9 @@ function getchapter(book=0, chap=1, style='plain', paragraph=true, nopunct=true,
 	let chapter =[];
 
 	const record = books[book].split("|");
-	const filename = 'x' + record[2] + chapfix(chap);
+	const filename = 't' + record[2] + chapfix(chap);
 
-	fetch('./x/' + filename + '.txt')
+	fetch('./t/' + filename + '.txt')
 	.then(res => res.text())
 	.then(out => {
 	  let outstring = `<h1>${record[1]} פרק ${shownum(chap, true)}</h1>\n\n`;
@@ -143,20 +147,62 @@ function getchapter(book=0, chap=1, style='plain', paragraph=true, nopunct=true,
 }
 
 function cleanverse(str = '', nopunct = false) {
+	const novowels = ['cursive', 'isaiah', 'paleo', 'proto'];
+
 	let stringout = str;
 	if (stringout.endsWith('<br>')) {
 		stringout = stringout.slice(0, -4);
 	}
 
+	if (!nekudot || novowels.indexOf(style) >= 0) {
+		stringout = devowel(stringout);
+	}
+
 	if (nopunct) {
 		stringout = stringout.replace(/\-{2}/g, ' ');
 		stringout = stringout.replace(/\-/g, '־');
-		stringout = stringout.replace(/{.}/g, "");
-		stringout = stringout.replace(/[\.,#!\$%\^&\*;:=_`~()]/g,"");
+		stringout = stringout.replace(/[\.,#!\$%\^\*;:=_`~()]/g,"");
 		stringout += " ׃";
-
+		stringout = stringout.replace(/ {(.)} ׃/g, ": {$1}");
+		stringout = stringout.replace(/{ס}/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+		stringout = stringout.replace(/{ר}/g, "<br>");
+		stringout = stringout.replace(/{.}/g, "");
 	}
 	return stringout;
+}
+
+function devowel(text) {
+	// replace vowel characters
+	text = text.replace(/[\u0591-\u05C7]/g,"");
+	text = text.replace(/[בּבֿ]/g, "ב");
+	// replace presentation forms
+	text = text.replace(/[ﬡאּאַאָﭏ]/g, "א");
+	text = text.replace(/ﬠ/g, "ע");
+	text = text.replace(/בּבֿ]/g, "ב");
+	text = text.replace(/[ﬢדּ]/g, "ד");
+	text = text.replace(/ךּ/g, "ך");
+	text = text.replace(/ﬦ/g, "ם");
+	text = text.replace(/ףּ/g, "ף");
+	text = text.replace(/גּ/g, "ג");
+	text = text.replace(/[ﬣהּ]/g, "ה");
+	text = text.replace(/[ﬤכּכֿ]/g, "כ");
+	text = text.replace(/[ﬥלּ]/g, "ל");
+	text = text.replace(/[מּ]/g, "מ");
+	text = text.replace(/[נּ]/g, "נ");
+	text = text.replace(/[פּפֿ]/g, "פ");
+	text = text.replace(/קּ/g, "ק");
+	text = text.replace(/[ﬧרּ]/g, "ר");
+	text = text.replace(/סּ/g, "ס");
+	text = text.replace(/[שּשּׁשּׂשׁשׂשׁ]/g, "ש");
+	text = text.replace(/[ﬨתּ]/g, "ת");
+	text = text.replace(/טּ/g, "ט");
+	text = text.replace(/צּ/g, "צ");
+	text = text.replace(/[וּוֹ]/g, "ו");
+	text = text.replace(/[יּיִ]/g, "'");
+	text = text.replace(/זּ/g, "ז");
+	text = text.replace(/ײַ/g, "''");
+
+	return text;
 }
 
 function shownum(x, hebrew = false ) {
