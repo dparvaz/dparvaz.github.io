@@ -284,17 +284,18 @@ function closepanels(update=false, id='') {
 		for (let panel of panels){
 			panel.style.maxHeight = null;
 		}	
-	} else {
-		for (let panel of panelnames) {
-			try {
-				if (!id.startsWith(panel)) {
-					MicroModal.close(panel + '-desktop');
-				}
-			} catch(err) {
-				console.log(err.message);
-			}
-		}
-	}
+	} 
+	// else {
+	// 	for (let panel of panelnames) {
+	// 		try {
+	// 			if (!id.startsWith(panel)) {
+	// 				MicroModal.close(panel + '-desktop');
+	// 			}
+	// 		} catch(err) {
+	// 			console.log(err.message);
+	// 		}
+	// 	}
+	// }
 
 	if (update) {
 		updatedisplay();
