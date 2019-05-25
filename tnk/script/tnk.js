@@ -198,7 +198,7 @@ function devowel(text) {
 	text = text.replace(/טּ/g, "ט");
 	text = text.replace(/צּ/g, "צ");
 	text = text.replace(/[וּוֹ]/g, "ו");
-	text = text.replace(/[יּיִ]/g, "'");
+	text = text.replace(/[יּיִ]/g, "י");
 	text = text.replace(/זּ/g, "ז");
 	text = text.replace(/ײַ/g, "''");
 
@@ -276,7 +276,7 @@ function panelshow(dlgname) {
     panel.style.maxHeight = panel.scrollHeight + "px";
 }
 
-function closepanels(update=false) {
+function closepanels(update=false, id='') {
 	const panels = document.getElementsByClassName('panel');
 	const panelnames = ['settings', 'book', 'help'];
 
@@ -287,8 +287,12 @@ function closepanels(update=false) {
 	} else {
 		for (let panel of panelnames) {
 			try {
-				MicroModal.close(panel + '-desktop');
-			} catch {}
+				if (!id.startsWith(panel)) {
+					MicroModal.close(panel + '-desktop');
+				}
+			} catch(err) {
+				console.log(err.message);
+			}
 		}
 	}
 
@@ -355,7 +359,8 @@ function desktopsetup() {
 	helpdlg.innerHTML = helpscreen;
 
 	MicroModal.init({
-		onClose: modal => { closepanels(true);
+		onClose: modal => { 
+			closepanels(true, modal.id);
 		},
 		disableFocus: true,
 		debugMode: true
