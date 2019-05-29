@@ -8,46 +8,123 @@
 
 	<!-- top of the screen -->
 	<header>
-		<img class="button" src="images/question.png" onclick="questiondialog();">
-		<img class="button" src="images/papyrus.png"  onclick="bookdialog();">
-		<img class="button" src="images/settings.png" onclick="settingsdialog();">
+		<img class="button" src="images/question.png" onclick="opendialog('help');">
+		<img class="button" src="images/papyrus.png"  onclick="opendialog('bookdlg');">
+		<img class="button" src="images/settings.png" onclick="opendialog('settings');">
 	</header>
 
 
-	<!-- mobile user interface -->
+	<!-- dialog boxes/accordions -->
 	<div class="main" id="main">
-		<div class="panel" id="settings-mobile">
-			<div class="panel__title" id="settings-mobile-title">
+		<div id="mymodal">
+		<div id="settings">
+			<div class="panel__title" id="settings-title">
 				<h2>Settings</h2>
 			</div>
-			<div class="panel__content" id="settings-mobile-content">
+			<div class="panel__content" id="settings-content">
+				<p>
+	        		Use modern punctuation: <input type="checkbox" id="punct" checked> <br>
+	        		Number verses in Hebrew: <input type="checkbox" id="hebrew" checked> <br>
+	        		Display nekudot: <input type="checkbox" id="nekudot" checked> <br>
+	        		List verses <input type="radio" name="para" id="parano" checked>separately <input type="radio" name="para" id="parayes">by paragraph<br>
+	        		Script style: 
+	        		<select id="style" size="1">
+					  <option>Plain</option>
+					  <option>STaM</option>
+					  <option>Cursive</option>
+					  <option>Isaiah</option>
+					  <option>Rashi</option>
+					  <option>Paleo-Hebrew</option>
+					  <option>Proto-Caananite</option>
+					</select>
+	        	</p>
 			</div>
-			<div class="panel__footer" id="settings-mobile-footer">
+			<div class="panel__footer" id="settings-footer">
 				<button class="okbutton" onclick="closepanels(true);">Ok</button>
 				<button class="closebutton" onclick="closepanels(false);">Cancel</button>
 			</div>
 		</div>
-		<div class="panel" id="book-mobile">
-			<div class="panel__title" id="book-mobile-title">
+		<div id="bookdlg">
+			<div class="panel__title" id="book-title">
 				<h2>Select Book and Chapter</h2>
 			</div>
-			<div class="panel__content" id="book-mobile-content">
+			<div class="panel__content" id="book-content">
+				<p>
+	        		Book: 
+		        		<select id="book" size="1" onchange="setchapters(this.selectedIndex);">
+						  	<option>Genesis</option>
+							<option>Exodus</option>
+							<option>Leviticus</option>
+							<option>Numbers</option>
+							<option>Deuteronomy</option>
+							<!-- <option>Joshua</option>
+							<option>Judges</option>
+							<option>I Samuel</option>
+							<option>II Samuel</option>
+							<option>I Kings</option>
+							<option>II Kings</option>
+							<option>Isaiah</option>
+							<option>Jeremiah</option>
+							<option>Ezekiel</option>
+							<option>Hosea</option>
+							<option>Joel</option>
+							<option>Amos</option>
+							<option>Obadiah</option>
+							<option>Jonah</option>
+							<option>Micah</option>
+							<option>Nahum</option>
+							<option>Habakkuk</option>
+							<option>Zephaniah</option>
+							<option>Haggai</option>
+							<option>Zechariah</option>
+							<option>Malachi</option>
+							<option>I Chronicles</option>
+							<option>II Chronicles</option>
+							<option>Psalms</option>
+							<option>Job</option>
+							<option>Proverbs</option>
+							<option>Ruth</option>
+							<option>Song of Songs</option>
+							<option>Ecclesiastes</option>
+							<option>Lamentations</option>
+							<option>Esther</option>
+							<option>Daniel</option>
+							<option>Ezra</option>
+							<option>Nehemiah</option> -->
+						</select>
+					Chapter: 
+						<select id="chap" size="1">
+						</select>
+	        	</p> 
 			</div>
-			<div class="panel__footer" id="book-mobile-footer">
+			<div class="panel__footer" id="book-footer">
 				<button class="okbutton" onclick="closepanels(true);">Ok</button>
 				<button class="closebutton" onclick="closepanels(false);">Cancel</button>
 			</div>
 		</div>
-		<div class="panel" id="help-mobile">
-			<div class="panel__title" id="help-mobile-title">
-				<h2>Settings</h2>
+		<div id="help">
+			<div class="panel__title" id="help-title">
+				<h2>About TaNaKh</h2>
 			</div>
-			<div class="panel__content" id="help-mobile-content">
+			<div class="panel__content" id="help-content">
+	        	<p>
+    				This is just a simple Bible reader that allows you to see the text of the Hebrew Bible in a number of scripts.
+	        	</p>
+	        	<p>
+	        		Hebrew text with vowels courtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
+	        	</p>
+	        	<p> 
+	        		Icons from <a href="https://www.flaticon.com">FlatIcon</a>.
+	        	</p>
+	        	<p>
+	        		Design and coding can all be blamed on <a href="https://danparvaz.com">Dan Parvaz</a>.
+	        	</p> 
 			</div>
-			<div class="panel__footer" id="help-mobile-footer">
+			<div class="panel__footer" id="help-footer">
 				<button class="closebutton" onclick="closepanels(false);">Close</button>
 			</div>
 		</div>
+		</div> <!-- end of modal --> 
 
 		<!-- main content -->
 
@@ -63,69 +140,6 @@
 	</footer>
 
 
-  <!-- desktop user interface -->
-
-	<div class="modal micromodal-slide" id="settings-desktop" aria-hidden="true">
-	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-	      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="settings-desktop-title">
-	        <header class="modal__header">
-	          <h2 class="modal__title" id="settings-desktop-title">
-	            Display settings
-	          </h2>
-	        </header>
-	        <main class="modal__content" id="settings-desktop-content">
-	        </main>
-	        <footer class="modal__footer">
-	          <button class="modal__btn modal__btn-primary"  data-micromodal-close data-micromodal-trigger="settings-desktop" aria-label="Change the settings">Ok</button>
-	          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window" onclick="closepanels();">Cancel</button>
-	        </footer>
-	      </div>
-	    </div>
-  </div>
-
-  <div class="modal micromodal-slide" id="book-desktop" aria-hidden="true">
-	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-	      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="book-desktop-title">
-	        <header class="modal__header">
-	          <h2 class="modal__title" id="book-desktop-title">
-	            Choose passage
-	          </h2>
-	        </header>
-	        <main class="modal__content" id="book-desktop-content">
-	        	
-	        </main>
-	        <footer class="modal__footer">
-	          <button class="modal__btn modal__btn-primary"  data-micromodal-close data-micromodal-trigger="book-desktop" aria-label="Change to the book and chapter selected">Ok</button>
-	          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window" onclick="closepanels();">Cancel</button>
-	        </footer>
-	      </div>
-	    </div>
-  </div>
-
-  	<div class="modal micromodal-slide" id="help-desktop" aria-hidden="true">
-	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-	      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="help-desktop-title">
-	        <header class="modal__header">
-	          <h2 class="modal__title" id="help-desktop-title">
-	            About TaNaKh
-	          </h2>
-	        </header>
-	        <main class="modal__content" id="help-desktop-content">
-	        </main>
-	        <footer class="modal__footer">
-	          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window" onclick="closepanels();">Cancel</button>
-	        </footer>
-	      </div>
-	    </div>
-  </div>
-
-
-
-
-
-
-	<script type="text/javascript" src="https://unpkg.com/micromodal/dist/micromodal.min.js
-"></script>
 	<script type="text/javascript" src="script/tnk.js"></script>
 </body>
 </html>
