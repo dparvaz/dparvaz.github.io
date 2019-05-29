@@ -1,84 +1,6 @@
 const books = ["Genesis|בראשית|01|50", "Exodus|שמות|02|40", "Leviticus|ויקרא|03|27", "Numbers|במדבר|04|36", "Deuteronomy|דברים|05|34", "Joshua|יהושוע|06|24", "Judges|שופטים|07|21", "I Samuel|שמואל א|08a|31", "II Samuel|שמואל ב|08b|24", "I Kings|מלכים א|09a|22", "II Kings|מלכים ב|09b|25", "Isaiah|ישעיהו|10|66", "Jeremiah|ירמיהו|11|52", "Ezekiel|יחזקאל|12|48", "Hosea|הושע|13|14", "Joel|יואל|14|3", "Amos|עמוס|15|9", "Obadiah|עובדיה|16|1", "Jonah|יונה|17|4", "Micah|מיכה|18|7", "Nahum|נחום|19|3", "Habakkuk|חבקוק|20|3", "Zephaniah|צפניה|21|3", "Haggai|חגיי|22|2", "Zechariah|זכריה|23|14", "Malachi|מלאכי|24|4", "I Chronicles|דברי הימים א|25a|29", "II Chronicles|דברי הימים ב|25b|36", "Psalms|תהילים|26|150", "Job|איוב|27|42", "Proverbs|משלי|28|31", "Ruth|רות|29|4", "Song of Songs|שיר השירים|30|8", "Ecclesiastes|קוהלת|31|12", "Lamentations|איכה|32|5", "Esther|אסתר|33|10", "Daniel|דנייאל|34|12", "Ezra|עזרא|35a|10", "Nehemiah|נחמיה|35b|13"];
 
-const helpscreen = `	        	<p>
-	        		This is just a simple Bible reader that allows you to see the text of the Hebrew Bible in a number of scripts.
-	        	</p>
-	        	<p>
-	        		Hebrew text with vowels courtesy of <a href="http://www.mechon-mamre.org">Mechon Mamre</a>.
-	        	</p>
-	        	<p> 
-	        		Icons from <a href="https://www.flaticon.com">FlatIcon</a>.
-	        	</p>
-	        	<p>
-	        		Design and coding can all be blamed on <a href="https://danparvaz.com">Dan Parvaz</a>.
-	        	</p> `;
-
- const bookscreen = `<p>
-	        		Book: 
-	        		<select id="book" size="1" onchange="setchapters(this.selectedIndex);">
-					  	<option>Genesis</option>
-						<option>Exodus</option>
-						<option>Leviticus</option>
-						<option>Numbers</option>
-						<option>Deuteronomy</option>
-						<!-- <option>Joshua</option>
-						<option>Judges</option>
-						<option>I Samuel</option>
-						<option>II Samuel</option>
-						<option>I Kings</option>
-						<option>II Kings</option>
-						<option>Isaiah</option>
-						<option>Jeremiah</option>
-						<option>Ezekiel</option>
-						<option>Hosea</option>
-						<option>Joel</option>
-						<option>Amos</option>
-						<option>Obadiah</option>
-						<option>Jonah</option>
-						<option>Micah</option>
-						<option>Nahum</option>
-						<option>Habakkuk</option>
-						<option>Zephaniah</option>
-						<option>Haggai</option>
-						<option>Zechariah</option>
-						<option>Malachi</option>
-						<option>I Chronicles</option>
-						<option>II Chronicles</option>
-						<option>Psalms</option>
-						<option>Job</option>
-						<option>Proverbs</option>
-						<option>Ruth</option>
-						<option>Song of Songs</option>
-						<option>Ecclesiastes</option>
-						<option>Lamentations</option>
-						<option>Esther</option>
-						<option>Daniel</option>
-						<option>Ezra</option>
-						<option>Nehemiah</option> -->
-					</select>
-					Chapter: 
-					<select id="chap" size="1">
-					</select>
-  
-	        	</p> `;
-
-const settingscreen = `<p>
-	        		Use modern punctuation: <input type="checkbox" id="punct" checked> <br>
-	        		Number verses in Hebrew: <input type="checkbox" id="hebrew" checked> <br>
-	        		Display nekudot: <input type="checkbox" id="nekudot" checked> <br>
-	        		List verses <input type="radio" name="para" id="parano" checked>separately <input type="radio" name="para" id="parayes">by paragraph<br>
-	        		Script style: 
-	        		<select id="style" size="1">
-					  <option>Plain</option>
-					  <option>STaM</option>
-					  <option>Cursive</option>
-					  <option>Isaiah</option>
-					  <option>Rashi</option>
-					  <option>Paleo-Hebrew</option>
-					  <option>Proto-Caananite</option>
-					</select>
-  
-	        	</p>`;
+const boxes = ['bookdlg', 'settings', 'help'];
 
 let book = 0;
 let chap = 1;
@@ -239,64 +161,44 @@ function chapfix(num) {
     return t+u;
 }
 
-function settingsdialog() {
+
+function opendialog(dlg) {
+
 	closepanels();
 	setvalues();
-	if (ismobile()) {
-		scroll(0,0);
-		panelshow('settings-mobile');
-	} else {
-		MicroModal.show('settings-desktop');
-	}
+
+	
+		if (ismobile()) {
+			scroll(0,0);
+		}
+
+		panelshow(dlg);
 }
 
-function bookdialog() {
-	closepanels();
-	setvalues();
-	if (ismobile()) {
-		scroll(0,0);
-		panelshow('book-mobile');
-	} else {
-		MicroModal.show('book-desktop');
-	}
-}
-
-function questiondialog() {
-	closepanels();
-	if (ismobile()) {
-		scroll(0,0);
-		panelshow('help-mobile');
-	} else {
-		MicroModal.show('help-desktop');
-	}
-}
 
 function panelshow(dlgname) {
 	const panel = document.getElementById(dlgname);
-    panel.style.maxHeight = panel.scrollHeight + "px";
+	if (ismobile()) {
+    	panel.style.maxHeight = panel.scrollHeight + "px";
+    } else {
+		panel.parentElement.style.display = "block";
+		panel.style.display = "block";
+	}
 }
 
 function closepanels(update=false, id='') {
-	const panels = document.getElementsByClassName('panel');
-	const panelnames = ['settings', 'book', 'help'];
+		const mobile  = ismobile();
 
-	if (ismobile()) {
-		for (let panel of panels){
-			panel.style.maxHeight = null;
+		for (let box of boxes){
+			const ele = document.getElementById(box);
+			if (mobile) {
+				ele.style.maxHeight = null;
+			} else {
+				ele.parentElement.style.display = "none";
+	    		ele.style.display = "none";
+	    	}
 		}	
-	} 
-	// else {
-	// 	for (let panel of panelnames) {
-	// 		try {
-	// 			if (!id.startsWith(panel)) {
-	// 				MicroModal.close(panel + '-desktop');
-	// 			}
-	// 		} catch(err) {
-	// 			console.log(err.message);
-	// 		}
-	// 	}
-	// }
-
+	
 	if (update) {
 		updatedisplay();
 	}
@@ -349,23 +251,24 @@ function ismobile() {
 }
 
 function desktopsetup() {
-	let platform = ismobile()? 'mobile' : 'desktop';
+	const mobile = ismobile();
+	const dlogtype = mobile ? 'panel' : 'modal-box';
 
-	const settingsdlg = document.getElementById(`settings-${platform}-content`);
-	const bookdlg = document.getElementById(`book-${platform}-content`);
-	const helpdlg = document.getElementById(`help-${platform}-content`);
+	if (!mobile) {
+		const modal = document.getElementById('mymodal');
+		modal.classList.add("modal");
 
-	settingsdlg.innerHTML = settingscreen;
-	bookdlg.innerHTML = bookscreen;
-	helpdlg.innerHTML = helpscreen;
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+		    closepanels();
+		  }
+		}
+	}
 
-	MicroModal.init({
-		onClose: modal => { 
-			closepanels(true, modal.id);
-		},
-		disableFocus: true,
-		debugMode: true
-	});
+	for (let box of boxes){
+			const ele = document.getElementById(box);
+			ele.classList.add(dlogtype);
+	}	
 }
 
 desktopsetup();
