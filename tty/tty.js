@@ -1,22 +1,16 @@
-var bg;
-var segDisp;
-var eliza;
-var inSession;
-var cnv;
+let bg, segDisp, eliza, inSession, cnv;
 
 function setup() {
-    cnv = createCanvas(568, 304);
+    cnv = createCanvas(window.innerWidth * .4, window.innerWidth * .214);
     cnv.parent('thetty');
 
     bg = loadImage("images/ttydisp.jpg");
-    segDisp = new Display(70,51);
+    segDisp = new Display(width*.123,width*.09);
     eliza = new Shrink();
     inSession = false;
-
 }
 
 function draw() {
- 
   background(bg);
   segDisp.show();
 }  
@@ -43,3 +37,7 @@ function mousePressed() {
 	}
 }
 
+function windowResized() {
+  resizeCanvas(window.innerWidth * .4, window.innerWidth * .214);
+  segDisp.setdims(width*.123,width*.09);
+}

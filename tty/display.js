@@ -1,23 +1,31 @@
-function Display(x, y) {	
-     this.x = x;
-	 this.y = y;
-     this.cells = [];
-     this.input = "";
-	 this.ouput = "";
-	 this.takingKeys = true;
+class Display{
+	constructor(x,y) {
+		this.setdims(x,y);
+		this.cells = [];
+		this.input = "";
+		this.ouput = "";
+		this.takingKeys = true;
 
-     frameRate(30);
+		frameRate(30);
 
-	 for (var i=0; i<16; i++) {
-		 this.cells[i] = loadImage("./images/spc.gif");
-	 }
+		for (let i=0; i<16; i++) {
+			this.cells[i] = loadImage("./images/spc.gif");
+		}
+	}
 
-	 this.show = function() {
+	setdims(x,y) {
+		this.x = x;
+		this.y = y;
+		this.w = width*.048;
+		this.h = width*.07;		
+	}
+
+	show() {
 		 fill(0);
-		 rect(this.x, this.y, 440, 40);
+		 rect(this.x, this.y, width*.775, width*.07);
          
 		 if (!this.takingKeys) {
-			 var c = this.output.charAt(0);
+			 let c = this.output.charAt(0);
 			 this.output = this.output.slice(1);
 			 this.append(c);
 			 
@@ -28,42 +36,42 @@ function Display(x, y) {
 		     }
 		 }
 
-		 for(var i=0; i<16; i++) {
-			 image(this.cells[i], this.x+i*25+5, this.y+ 2, 25, 33);
+		 for(let i=0; i<16; i++) {
+			 image(this.cells[i], this.x+i*this.w+5, this.y+ 2, this.w, this.h);
 		 }
 	 }
 
-     this.over = function() {
-		 var s = this.input;
-		 if ((s.length > 1) && (s.length > 3) && (s.substr(s.length-4, s.length-1) == " ga ")) {
+     over(){
+		 const s = this.input;
+		 if (s.endsWith(" ga ")) {
 			 return true;
 	     } else { 
 			 return false;
 		 }
 	 }
 
-	 this.done = function() {
-		 var s = this.input;
-		 if ((s.length > 4) && (s.substr(s.length-4, s.length-1) == " sk ") || (s.substr(s.length-5, s.length-1) ==" sksk"))
+	 done() {
+		 const s = this.input;
+		 if (s.endsWith(" sk ") || s.endsWith("sksk"))
 	         return true;
 		 else 
 			 return false;
 		 }
 
-     this.readOut = function(s) {
+     readOut(s) {
 	    this.takingKeys = false;
 		this.output = s;
 		frameRate(10);
 	 }
 
-	 this.getInput = function() {
-		 var s = this.input;
+	 getInput() {
+		 const s = this.input;
 		 this.input = "";
 		 return s;
 	 }
 
-     this.append = function(c) {
-        for (var i=1; i<16; i++) {
+     append(c) {
+        for (let i=1; i<16; i++) {
 		   this.cells[i-1] = this.cells[i];
 		}
 		if (c != ' ') {
@@ -74,7 +82,7 @@ function Display(x, y) {
             this.input += c;
 	 }
 
-	 this.add = function(code) {
+	 add(code) {
 		 if (code != BACKSPACE) {
 			 this.append(String.fromCharCode(code).toLowerCase());
 		 } else {
