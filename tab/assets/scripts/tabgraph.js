@@ -298,7 +298,7 @@ function plotCols(args,comm) {
 	//let yRange = Math.abs(yMax - yMin);
 
 	// plot values 
-    const plotPoint = (Unicode) ? "×" : "*";
+  const plotPoint = (Unicode) ? "×" : "*";
 	for (let j = 0; j < args.length; j += 2) {
 		let yCol = args[j][1];
 		let xCol = args[j+1][1];
@@ -367,6 +367,8 @@ function binPlot(data, labels) {
 
 	const yA = yAxis(yMax, yMin)
 	const graphs = Array(k+1).fill(null);
+
+  const plotPoint = (Unicode) ? "×" : "*";
 
 	//plot the data
 	for (let i = 0; i < k+1; i++) {
