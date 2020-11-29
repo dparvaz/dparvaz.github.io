@@ -1,0 +1,19 @@
+note this is the first program in the MiniTAB 
+note Student Handbook
+read the following data into columns c1 and c2
+270 218
+236 234
+210 214
+142 116
+280 200
+272 276
+160 146
+220 182
+226 238 
+242 288
+186 190
+266 236
+subtract c1 from c2 (row by row), put changes into c3
+average c3
+histogram of c3
+stop

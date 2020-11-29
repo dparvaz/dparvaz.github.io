@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<title>OpenTAB</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Rokkitt|Fjalla+One|Source+Code+Pro" rel="stylesheet">
+</head>
+<body>
+	<input type='file' class="fileread" id="fileread" accept='.txt,.mtb,text/plain' onchange='openFile(event)'>
+  <div id="sourceDropdown" class="dropdown-content">
+    <span class="menuitem" onclick="srcClick(this)">Open</span>
+    <span class="menuitem" onclick="srcClick(this)">Rename</span>
+    <span class="menuitem" onclick="srcClick(this)">Delete</span>
+    <span class="menuitem" onclick="srcClick(this)">Upload</span>
+  </div>
+  <div id="deviceDropdown" class="dropdown-content">
+    <span class="menuitem" onclick="srcClick(this)">Open</span>
+    <span class="menuitem" onclick="srcClick(this)">Rename</span>
+    <span class="menuitem" onclick="srcClick(this)">Upload</span>
+  </div>
+	<div id="fileDropdown" class="dropdown-content"></div>
+	<div class="container">
+	<header>
+		<h1 class="maintitle">OpenTAB</h1>
+		
+			<button class="button top" onclick="infoWindow();"><i class="fa fa-info-circle fa-2x"></i></button>
+	
+	</header>
+	<div class="filelist">
+		<div class="ui">
+			<span class="uiitem" onclick="addSource()">+</span>
+		</div>
+		<h3>Source Files</h3>
+		<ul class="files" id="source">
+			<li class="item selected">untitled</li>
+			<li class="item off">untitled</li>
+			<li class="item off">untitled</li>
+			<li class="item off">untitled</li>
+			<li class="item off">untitled</li>
+		</ul>
+		<h3>Devices</h3>
+		<ul class="devices" id="dev">
+			<li class="device" id="dev1">1- untitled</li>
+			<li class="device" id="dev2">2- untitled</li>
+			<li class="device" id="dev3">3- untitled</li>
+			<li class="device" id="dev4">4- untitled</li>
+			<li class="device" id="dev7">7- untitled</li>
+			<li class="device" id="dev8">8- untitled</li>
+			<li class="device" id="dev9">9- untitled</li>
+		</ul>
+	</div>
+	<div id="code">
+		<h2>Code
+		<div class="controls">
+		<button class="button run" onclick="run();"><i class="fa fa-play"></i></button>
+		<button class="button" onclick="editor.execCommand('showKeyboardShortcuts');"><i class="fa fa-question"></i></button>
+			<button class="button" onclick="editor.undo()"><i class="fa fa-undo"></i></button>
+			<button class="button" onclick="editor.redo()"><i class="fa fa-repeat"></i></button>
+			<button class="button" onclick="editor.setValue('')"><i class="fa fa-eraser"></i></button>
+			<button class="button" onclick="printText(false);"><i class="fa fa-print"></i></button>
+		</div></h2>
+	<pre id="tab" autofocus>
+	 </pre>
+    </div>
+	<div id="results">
+		<h2>Results
+		<div class="controls">
+			<button class="button" onclick="printText(true);"><i class="fa fa-print"></i></button>
+		</div></h2>
+		<div id="output" readonly>
+		</div>
+	</div>
+<!--	<footer>
+		<p>Page and coding by <a href="https://danparvaz.com">Dan Parvaz</a>, with components by <a href="#">others</a>.</p>
+</footer> -->
+</div>
+<script type="text/javascript" src="./assets/scripts/src-noconflict/ace.js" charset="utf-8"></script>
+<script type="text/javascript" src="./assets/scripts/tabgui.js"></script>
+<script type="text/javascript" src="./assets/scripts/taberr.js"></script>
+<script type="text/javascript" src="./assets/scripts/tabloop.js"></script>
+<script type="text/javascript" src="./assets/scripts/tabparse.js"></script>
+<script type="text/javascript" src="./assets/scripts/tabutil.js"></script>
+<script type="text/javascript" src="./assets/scripts/tabmath.js"></script>
+<script type="text/javascript" src="./assets/scripts/tabstat.js"></script>
+<script type="text/javascript" src="./assets/scripts/tabgraph.js"></script>
+<script type="text/javascript" src="./assets/scripts/ci.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+note sample program from pg. 112 of the _MINITAB Student Handbook_ 
+note by Ryan, Joiner and Ryan, Copyright 1976, Wadsworth Pub. Co.
+
+note unicode uncomment this line if you want Unicode graphics
+
+noprint
+nrandom 100 obsn., mu = 64, sigma = 3, put into c1
+nrandom 100 obsn., mu = 64, sigma = 3, put into c2
+nrandom 100 obsn., mu = 64, sigma = 3, put into c3
+nrandom 100 obsn., mu = 64, sigma = 3, put into c4
+nrandom 100 obsn., mu = 64, sigma = 3, put into c5
+nrandom 100 obsn., mu = 64, sigma = 3, put into c6
+nrandom 100 obsn., mu = 64, sigma = 3, put into c7
+nrandom 100 obsn., mu = 64, sigma = 3, put into c8
+nrandom 100 obsn., mu = 64, sigma = 3, put into c9
+nrandom 100 obsn., mu = 64, sigma = 3, put into c10
+add c1-c10, put sums into c11
+divide c11 by 10, put xbars into c12
+average c12
+standard deviation of c12
+histogram of xbars in c12,
+stop

@@ -1,0 +1,45 @@
+# Table 12.4 (pg 201) in _Statistics in language studies_
+# by Woods, A. et al. Copyright CUP 1986
+#
+# Total error gravity scores of ten native English teachers (1),
+# ten Greek teachers of English, (2) and ten native English 
+# non-teachers (3) on 32 English sentences
+#
+# NB: This table goes with the MiniTAB examples in Appendix B.
+# The source code here is "gravity.mtb"
+# 
+#      Group
+#   1    2    3 
+# ---------------
+   22   36   22
+   16    9   18
+   42   29   42
+   25   35   21
+   31   34   26
+   36   23   41
+   29   25   26
+   24   31   20
+   29   35   18
+   18   21   15
+   23   33   21
+   22   13   19
+   31   22   39
+   21   29   23
+   27   25   24
+   32   25   29
+   23   39   18
+   18   19   16 
+   30   28   29
+   31   41   22
+   20   25   12
+   21   17   26
+   29   26   43
+   22   37   26
+   26   34   22
+   20   28   19
+   29   33   30 
+   18   24   17
+   23   37   15
+   25   33   15
+   27   39   28
+   11   20   14

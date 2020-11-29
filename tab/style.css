@@ -1,0 +1,246 @@
+:root {
+	--main-bg-color: #171d22;
+	--accent-color: SkyBlue;
+	--ui-component: #181818;
+	--ui-highlight: #282828;
+	--text-background: #002b36;
+}
+
+html {
+	font-size = 14px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+	font-family: "Fjalla One", sans-serif;
+	font-size: 2.5rem;
+	font-style: normal;
+	font-weight: bold;
+}
+
+.maintitle {
+	color: black;
+	background-color: var(--accent-color);
+  margin: 0;
+  width: 3.3em;
+  padding: .5em;
+  text-align: center;
+}
+
+h2 {
+	font-family: "Fjalla One", sans-serif;
+	font-size: 1.75rem;
+	font-style: normal;
+	font-weight: bold;
+  color: white;
+	
+}
+
+h3 {
+	margin-left: 1rem;
+}
+
+
+p {
+	font-family: 'Rokitt', serif;
+	font-size: 1.5rem;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr 3fr 3fr;
+	grid-template-rows: 6rem auto 5rem;
+	grid-gap: 1em;
+    height: 100vh;
+    background-color: var(--main-bg-color);
+    padding: 0;
+}
+
+.fileread {
+	display: none;
+}
+
+#files {
+		font-family: "Source Code Pro", "Courier", "Courier New", monospace;
+		font-size: 1rem;
+    grid-column: 1/2;
+    grid-row: 2/4;
+    background-color: var(--main-bg-color);
+ }
+
+#code {
+	font-family: 'Rokitt', serif;
+	font-size: 22px;
+	line-height: 30px;
+    grid-column: 2/3;
+    grid-row: 2/3;  
+}
+
+#tab {
+		margin: 0;	
+    overflow: scroll;
+    height: 70vh;
+    width: 40vw;
+}
+
+#results {
+		font-family: "Source Code Pro", "Courier", "Courier New", monospace;
+		font-size: 1rem;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    background-color: var(--main-bg-color);
+ }
+
+#output {
+		font-family: "Source Code Pro", "Courier", "Courier New", monospace;
+		font-size: 1rem;
+    background-color: var(--text-background);
+		color: white;
+    width: 40vw;
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+		white-space: pre;
+		margin: 0;
+		overflow-wrap: normal;
+}
+
+.ui {
+	text-align: right;
+	margin-right: 1rem;
+}
+
+.uiitem {
+	cursor: pointer;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.filelist {
+	margin-top: 3rem;
+	color: white;
+	font-family: sans-serif;
+}
+
+.item, .device {
+		background-color: var(--ui-component);
+		margin-right: 1rem;
+		text-align: right;
+		direction: rtl;
+		cursor: pointer;
+		list-style-position: inside;
+		border: 2px solid var(--main-bg-color);
+		line-height: 2.25rem;
+		width: 10rem;
+}
+
+.off {
+	visibility: hidden;
+}
+
+.item:hover, .device:hover {
+	background-color: var(--ui-highlight);
+}
+
+.selected {
+	font-weight: bold;
+	list-style-type: disc;
+}
+
+.files, .devices {
+	list-style-type: circle;
+}
+
+.comm {
+	color: silver;
+}
+
+.button {
+  font-family: "Fjalla One", sans-serif;
+  background-color: var(--ui-component);
+  border: none;
+  color: white;
+  /*padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+	height: 2vw;
+	width: 2vw;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+	background-color: var(--ui-highlight);
+}
+
+.top {
+	position: absolute;
+	top: 1.5rem;
+	right: 1.5rem;
+}
+
+.top:hover {
+	color: var(--accent-color);
+}
+
+.run {
+	margin-right: 2rem;
+}
+
+.controls {
+	text-align: right;
+	width: 50%;
+	float: right;
+	margin-right: 2rem;
+}
+
+
+#run {
+	float: right;
+  margin-right: 1.75rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #383838;
+	color: white;
+  min-width: 160px;
+  overflow: auto;
+	font-family: sans-serif;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 5;
+}
+
+.show {display: block;} 
+
+.menuitem {
+  padding: .75rem .75rem;
+  text-decoration: none;
+	font-weight: normal;
+	text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+.menuitem:hover { 
+	background-color: #484848;
+}
+
+header {
+	background-color: var(--main-bg-color);
+	grid-column: span 3;
+}
+
+footer {
+	background-color: palegoldenrod;
+ 	grid-column: span 3;
+ 	text-align: center;
+    padding: 0;
+}

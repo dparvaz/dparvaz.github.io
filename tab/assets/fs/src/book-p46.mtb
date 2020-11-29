@@ -1,0 +1,32 @@
+note sample program from pg. 46 of the _MINITAB Student Handbook_ 
+note by Ryan, Joiner and Ryan, Copyright 1976, Wadsworth Pub. Co.
+
+note unicode uncomment this line if you want Unicode graphics
+
+read year into c1, winning times into c2-c4
+#             race
+# year  100m  200m  300m
+
+ 1900   10.8  22.2  49.4
+ 1904   11.0  21.6  49.2
+ 1908   10.8  22.4  50.0
+ 1912   10.8  21.7  48.2
+ 1920   10.8  22.0  49.6
+ 1924   10.6  21.6  47.6
+ 1928   10.8  21.8  47.8
+ 1932   10.3  21.2  46.2
+ 1936   10.3  20.7  46.5
+ 1948   10.3  21.1  46.2
+ 1952   10.4  20.7  45.9
+ 1956   10.5  20.6  46.7
+ 1960   10.2  20.5  44.9
+ 1964   10.0  20.3  45.1
+ 1968    9.9  19.8  43.8
+ 1972   10.1  20.0  44.7
+ 
+divide 100 by c2, put speeds into c12
+divide 200 by c3, put speeds into c13
+divide 400 by c4, put speeds into c14
+mplot c12 vs c1, c13 vs c1, c14 vs c1
+stop
+

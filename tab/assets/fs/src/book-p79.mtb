@@ -1,0 +1,13 @@
+note sample program from ex 3-14 (p. 79) of the 
+note _MINITAB Student Handbook_ by Ryan, Joiner and Ryan, 
+note Copyright 1976, Wadsworth Pub. Co.
+
+note unicode uncomment this line if you want Unicode graphics
+
+btrials 50 obs., p= 0.5, put into c1 (fifty tosses)
+generate first 50 integers into c3
+parsum c1, put into c2
+divide c2 by c3, put into c4 (successive ratios)
+plot ratios in c4 vs. number of tosses in c3
+print c1-c4
+stop

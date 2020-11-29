@@ -1,0 +1,7 @@
+generate the first 5 numbers in column c1
+generate the number from 10 through 12 and put them in c2
+average c1, put the answer in c4
+subtract c4 from c1, put in c5
+print c1 c2 c4 c5
+print c4
+stop

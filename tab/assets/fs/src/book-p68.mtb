@@ -1,0 +1,14 @@
+note sample program from pg. 68 of the _MINITAB Student Handbook_
+note by Ryan, Joiner and Ryan, Copyright 1976, Wadsworth Pub. Co.
+
+note unicode uncomment this line if you want Unicode graphics
+
+read c1, c2
+ -1  .5
+  1  .5
+drandom 100 obs., values into c1, prob. in c2, put in c3
+parsum c3, partial sums in c4
+generate 100 integers into c5
+width 100, height 20 for plot
+plot c4 vs c5
+stop

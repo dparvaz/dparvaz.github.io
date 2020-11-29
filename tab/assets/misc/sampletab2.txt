@@ -1,0 +1,221 @@
+https://openlibrary.org/books/OL5212871M/Minitab_student_handbook
+
+note this is the first program in the MiniTAB 
+note Student Handbook
+read the following data into columns c1 and c2
+270 218
+236 234
+210 214
+142 116
+280 200
+272 276
+160 146
+220 182
+226 238 
+242 288
+186 190
+266 236
+subtract c1 from c2 (row by row), put changes into c3
+average c3
+histogram of c3
+stop
+
+
+read into c3-c5, c1
+B. J. Smith          2.1   3.2   1.9  28000   150  28
+W. Johnson           2.0   3.8   1.4  31000   148
+D. D. Jones          2.1   2.9   2.5  62000   151
+F. A. Brown          1.9   3.6   2.3  40000   155  14 
+
+
+
+set the following data into c1
+1 2 3 4 5
+set into c2
+10 11  12.0
+average c1, put into c4
+subtract c4 from c1, put into c5
+print c1 c2 c4 c5
+print c4
+stop
+
+
+
+read c1, c2
+ -1  .5
+  1  .5
+drandom 100 obs., values into c1, prob. in c2, put in c3
+parsum c3, partial sums in c4
+generate 100 integers into c5
+width 100, height 20 for plot
+plot c4 vs c5
+stop
+
+
+
+
+
+read the following items in c2-c4
+1   98.3  5
+1  101.2  3
+2  100.5  8
+1   99.3  6
+2   99.6  7
+2   99.9  6
+1  100.1  6
+choose rows with 1 in c2, corresponding rows of c3 and c4, put in c12-c14
+print c2-c4, c12-c14
+stop
+
+
+
+set into c1
+6, 4, 2, 1, 2
+average c1, put into c2
+subtract c2 from c1, put deviations into c3
+multiply c3 by c3, put squared deviations into c4
+sum c4, put sum into c5
+divide c5 by 4, put quotient into c6
+sqrt c6 put into c7
+standard deviation of c1
+print c7
+stop
+
+
+read height into c1, weight into c2
+68  150
+70  159
+64  110
+74  180
+71  160
+69  170
+67  125
+66  140
+71  175
+70  160
+plot weight in c2 vs. height in c1
+stop
+
+
+read year into c1, winning times into c2-c4
+1900  10.8  22.2  49.4
+1904  11.0  21.6  49.2
+1908  10.8  22.4  50.0
+1912  10.8  21.7  48.2
+1920  10.8  22.0  49.6
+1924  10.6  21.6  47.6
+1928  10.8  21.8  47.8
+1932  10.3  21.2  46.2
+1936  10.3  20.7  46.5
+1948  10.3  21.1  46.2
+1952  10.4  20.7  45.9
+1956  10.5  20.6  46.7
+1960  10.2  20.5  44.9
+1964  10.0  20.3  45.1
+1968   9.9  19.8  43.8
+1972  10.1  20.0  44.7
+divide 100 by c2, put speeds into c12
+divide 200 by c3, put speeds into c13
+divide 400 by c4, put speeds into c14
+mplot c12 vs c1, c13 vs c1, c14 vs c1
+stop
+
+
+set heights in col c3
+67, 64, 61, 71, 60, 70, 66, 70, 71, 74, 66, 67
+sample 2 observations from col c3, put in c6
+stop
+
+
+btrials 50 obs., p= 0.5, put into c1 (fifty tosses)
+generate first 50 integers into c3
+parsum c1, put into c2
+divide c2 by c3, put into c4 (successive ratios)
+plot ratios in c4 vs. number of tosses in c3
+print c1-c4
+stop
+
+
+decimal places = 1
+set the following into c1
+.5, 2, 2.5, -.5, -.3 1.5 .5
+rank c1 place ranks in c2
+print c1, c2
+stop
+
+
+
+
+binomial prob. for n=3, p=.5, put into c1
+generate integers from 0 to 3, put into c2
+plot c1 vs c2
+binomial prob. for n=7, p=.5, put into c1
+generate integers from 0 to 7, put into c2
+plot c1 vs c2
+binomial prob. for n=15, p=.5, put into c1
+generate integers from 0 to 15, put into c2
+plot c1 vs c2
+
+
+noprint
+nrandom 100 obsn., mu = 64, sigma = 3, put into c1
+nrandom 100 obsn., mu = 64, sigma = 3, put into c2
+nrandom 100 obsn., mu = 64, sigma = 3, put into c3
+nrandom 100 obsn., mu = 64, sigma = 3, put into c4
+nrandom 100 obsn., mu = 64, sigma = 3, put into c5
+nrandom 100 obsn., mu = 64, sigma = 3, put into c6
+nrandom 100 obsn., mu = 64, sigma = 3, put into c7
+nrandom 100 obsn., mu = 64, sigma = 3, put into c8
+nrandom 100 obsn., mu = 64, sigma = 3, put into c9
+nrandom 100 obsn., mu = 64, sigma = 3, put into c10
+add c1-c10, put sums into c11
+divide c11 by 10, put xbars into c12
+print c12
+average c12
+standard deviation of c12
+histogram of xbars in c12, first midpoint 55, width .5
+stop
+
+set data into c1 
+4.9, 4.7, 5.1, 5.4, 4.7, 5.2, 4.8. 5.1
+average of c1
+zinterval 95 percent confidence, sigma - .2 data in c1
+stop
+
+
+
+
+read depth into c1, flow rate into c2
+0.34   0.636
+0.29   0.319
+0.28   0.734
+0.42   1.327
+0.29   0.487
+0.41   0.924
+0.76   7.350
+0.73   5.890
+0.46   1.979
+0.40   1.124
+plot flow rate c2 vs depth c1
+
+
+set the following scores into c1
+2.9, 3.1, 3.1, 3.7, 3.1, 4.2, 3.7, 3.9, 3.1, 3.0, 2.9
+set the following scores into c2
+2.7, 3.4, 3.6, 3.2, 4.0, 4.1, 3.8, 3.8, 4.3, 3.4, 3.3
+set the following scores into c3
+3.3, 3.3, 3.5, 3.5, 2.8, 2.8, 3.2, 2.8, 3.8, 3.5, 3.8
+set the following scores into c4
+3.3, 3.2, 3.4, 2.7, 2.7, 3.3, 2.9, 3.2, 2.9, 2.6, 2.8
+set the following scores into c5
+4.1, 4.1, 3.7, 4.2, 3.1, 3.5, 2.8, 3.5, 3.7, 3.5, 3.9
+aovoneway c1-c5
+stop
+
+set into c1
+2.6 2.0 1.7 2.7 2.5 2.6 2.5 3.0
+set into c2
+1.2 1.8 1.8 2.3 1.3 3.0 2.2 1.3 1.5 1.6 1.3 1.5 2.7 2.0
+median of c1
+median of c2
+stop
