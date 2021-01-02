@@ -1059,7 +1059,7 @@ function cumul(args, comm="PARS") {
   let p = Columns[args[0][1]];
 	let c = Array(p.length).fill(0);
 
-	c[1] = p[1];
+	c[0] = p[0];
 
 	for (let i=1; i<p.length; i++) {
 		c[i] = (comm == "PARS") ? p[i] + c[i-1] : p[i] * c[i-1];
