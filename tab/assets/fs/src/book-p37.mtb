@@ -1,0 +1,32 @@
+note sample program from pg. 37 of the _MINITAB Student Handbook_ 
+note by Ryan, Joiner and Ryan, Copyright 1976, Wadsworth Pub. Co.
+
+note The code as written expects the data file "cartoon.txt"
+note to be loaded and available on device 1. The listing in the book
+note included the data in the program, and here we have chosen to
+note load it separately
+
+note unicode uncomment this line if you want Unicode graphics
+
+inunit 1
+read the cartoon data into c1-c9
+
+note first analyze otis scores for those who saw black and white
+choose rows with 0 in c2, corr. rows of c5, put into c12, c15
+histogram of c15, first mid 80, interval width of 5
+average of c15
+median of c15
+standard deviation of c15
+maximum of c15
+minimum of c15
+
+note now analyze otis scores for those who saw color slides
+choose rows with 1 in c2, corr. rows of c5, put into c12, c15
+histogram of c15, first mid 80, interval width of 5
+average of c15
+median of c15
+standard deviation of c15
+maximum of c15
+minimum of c15
+
+stop

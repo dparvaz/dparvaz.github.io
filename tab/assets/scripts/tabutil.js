@@ -257,7 +257,8 @@ function joinVals(args) {
 
 	args = derefArgs(args);
 	if (args === true) return true;
-
+  
+  args.reverse();  // to match semantics of JOIN
 	for (let arg of args)  {
 		if (arg[0] == "N") {
 			result.push(arg[1]);
@@ -307,28 +308,6 @@ function setDevice(args, comm) {
 		return true;
 	}
 
-	return false;
-}
-
-/*
- * joinVals(args) -- join scalars and arrays into one array, and 
- * place them in the column noted in the final arg.
- */
-function joinVals(args) {
-	let result = [];
-	let putIn = args.pop();
-
-	args = derefArgs(args);
-	if (args === true) return true;
-
-	for (let arg of args)  {
-		if (arg[0] == "N") {
-			result.push(arg[1]);
-		} else {
-			result = result.concat(Columns[arg[1]]);
-		}
-	}
-	Columns[putIn[1]] = result;
 	return false;
 }
 

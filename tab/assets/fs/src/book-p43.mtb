@@ -1,0 +1,11 @@
+note sample program from pg. 43 of the _MINITAB Student Handbook_ 
+note by Ryan, Joiner and Ryan, Copyright 1976, Wadsworth Pub. Co.
+
+note The code as written expects the data file "cartoon.txt"
+note to be loaded and available on device 1.
+
+inunit 1
+read the cartoon data into c1-c9
+
+plot "immediate cartoon" scores in c6 vs normal scores in c5
+stop

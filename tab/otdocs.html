@@ -187,6 +187,8 @@ Error message and password prompt
 
 <li>$:/state/toc/Contents-Fortran-1843068618</li>
 
+<li>$:/state/toc/Contents-Manipulations-1843068618</li>
+
 <li>$:/state/toc/Contents-PlotsAndHistograms-1843068618</li>
 
 <li>$:/state/toc/Contents-Printing-1843068618</li>
@@ -461,7 +463,11 @@ Error message and password prompt
 
 <li>IRANDOM</li>
 
+<li>JOIN</li>
+
 <li>LPLOT</li>
+
+<li>Manipulations</li>
 
 <li>MPLOT</li>
 
@@ -472,6 +478,12 @@ Error message and password prompt
 <li>NRANDOM</li>
 
 <li>ORDER</li>
+
+<li>PARPRODUCT</li>
+
+<li>PARSUMS</li>
+
+<li>PICK</li>
 
 <li>PLOT</li>
 
@@ -10140,10 +10152,13 @@ Error message and password prompt
 <div created="20201108205153079" creator="TABcentral" modified="20201108205233804" modifier="TABcentral" title="$:/state/toc/Contents-Fortran-1843068618">
 <pre>open</pre>
 </div>
+<div created="20210103184409771" creator="TABcentral" modified="20210103190302317" modifier="TABcentral" title="$:/state/toc/Contents-Manipulations-1843068618">
+<pre>close</pre>
+</div>
 <div created="20201111003741364" creator="TABcentral" modified="20201228055156410" modifier="TABcentral" title="$:/state/toc/Contents-PlotsAndHistograms-1843068618">
 <pre>close</pre>
 </div>
-<div created="20201108210251528" creator="TABcentral" modified="20201228055122518" modifier="TABcentral" title="$:/state/toc/Contents-Printing-1843068618">
+<div created="20201108210251528" creator="TABcentral" modified="20210103181240003" modifier="TABcentral" title="$:/state/toc/Contents-Printing-1843068618">
 <pre>close</pre>
 </div>
 <div created="20201121181135208" creator="TABcentral" modified="20201228055117510" modifier="TABcentral" title="$:/state/toc/Contents-RandomData-1843068618">
@@ -10158,7 +10173,7 @@ Error message and password prompt
 <div created="20201108172033979" creator="T" modified="20201108172044938" modifier="TABcentra" title="$:/status/UserName">
 <pre>TABcentral</pre>
 </div>
-<div created="20201228050200497" creator="TABcentral" list="[[3. Notation convention]] HISTOGRAM LPLOT WIDTH TPLOT MPLOT IRANDOM NRANDOM PRANDOM URANDOM SAMPLE BRANDOM BTRIALS BASE DRANDOM PUNCH PRINT FPUNCH COLUMNS FPRINT FREAD GENERATE EnteringNumbers [[1. Introduction]]" modified="20201228055159701" modifier="TABcentral" title="$:/StoryList">
+<div created="20210103180843765" creator="TABcentral" list="[[1. Introduction]]" modified="20210103190530244" modifier="TABcentral" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11172,8 +11187,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201122161440260" creator="TABcentral" modified="20201122161440787" modifier="TABcentral" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>math</pre>
 </div>
-<div created="20201108174357163" creator="TABcentral" modified="20201228035551305" modifier="TABcentral" title="$:/temp/search">
-<pre></pre>
+<div created="20201108174357163" creator="TABcentral" modified="20210103180840222" modifier="TABcentral" title="$:/temp/search">
+<pre>Contents</pre>
 </div>
 <div created="20201122161435498" creator="TABcentral" modified="20201122161435498" modifier="TABcentral" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -11474,8 +11489,12 @@ stop
 
 Follows data. This command was designed for interactive terminals in MiniTAB, but is entirely optional in OpenTAB. If the line contains a recognizable command, then the system recognizes that it has reached the end of data and behaves accordingly. </pre>
 </div>
-<div caption="5. Entering Numbers" created="20201108185202484" creator="TABcentral" modified="20201108194659114" modifier="TABcentral" tags="Contents" title="EnteringNumbers">
-<pre></pre>
+<div caption="5. Entering Numbers" created="20201108185202484" creator="TABcentral" modified="20210103180922567" modifier="TABcentral" tags="Contents" title="EnteringNumbers">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'EnteringNumbers'  &quot;sort[title]&quot;&gt;&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div created="20201108211044261" creator="TABcentral" modified="20201109035523160" modifier="TABcentral" tags="Printing" title="FPRINT">
 <pre>''FPRI''NT ''C'', ..., ''C''
@@ -11682,6 +11701,51 @@ stop
 *** Execution halted ***
 ```</pre>
 </div>
+<div created="20210103181745827" creator="TABcentral" modified="20210103184424837" modifier="TABcentral" tags="Manipulations" title="JOIN">
+<pre>''JOIN'' ''E'' TO THE BOTTOM OF ''E'' ''[''TO ''E'',... TO ''E]'' PUT INTO ''C''
+
+Puts columns and/or constants together to form a new column
+
+!! Example 
+
+```
+set the following into c1
+5, 3, 6, 1, 4
+set the following into c2
+7, 8, 8
+join c1 to c2, put into c3
+print c1-c3
+stop
+```
+
+!! Output
+
+```
+
+-- set the following into c1
+   Column       C1    
+   Count        5     
+              5         3         6         1 . . . 
+-- set the following into c2
+   Column       C2    
+   Count        3     
+              7         8         8
+-- join c1 to c2, put into c3
+-- print c1-c3
+   Column       C1          C2          C3    
+   Count        5           3           8     
+   
+   Row    1           5           7           7
+          2           3           8           8
+          3           6           8           8
+          4           1                       5
+          5           4                       3
+          6                                   6
+          7                                   1
+          8                                   4
+-- stop
+```</pre>
+</div>
 <div created="20201111011319507" creator="TABcentral" modified="20201111011929402" modifier="TABcentral" tags="PlotsAndHistograms" title="LPLOT">
 <pre>* ''LPLO''T ''C''  VS ''C'' USING LETTERS CORRESPONDING TO C
 * ''LPLO''T ''C''  FROM ''K'' TO ''K''  VS ''C''  FROM ''K'' TO ''K'',  LETTERS IN C
@@ -11694,6 +11758,13 @@ Letters which correspond to the numerical values in the third column are used as
 ```
 
 See: [[PLOT]]</pre>
+</div>
+<div caption="10. Manipulations and Editing" created="20210103181626329" creator="TABcentral" modified="20210103181728718" modifier="TABcentral" tags="Contents" title="Manipulations">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'Manipulations'  &quot;sort[title]&quot;&gt;&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div created="20201111012025055" creator="TABcentral" modified="20201111012254967" modifier="TABcentral" tags="PlotsAndHistograms" title="MPLOT">
 <pre>''MPLO''T ''C'' VC ''C'' AND ''C'' VS ''C'' AND ...
@@ -11765,6 +11836,115 @@ stop
 
 Sort each column separately in ascending order. </pre>
 </div>
+<div created="20210103185327080" creator="TABcentral" modified="20210103190126282" modifier="TABcentral" tags="Manipulations" title="PARPRODUCT">
+<pre>''PARP''RODUCT OF ''C'', PUT INTO ''C''
+
+The product of the first $$i$$ rows of the first column will be put into the $$i$$th row of the second column.
+
+!! Example
+
+```
+note calculate factorial of value in k1
+define 5 into k1
+
+generate the first k1 integers into c1
+parproduct of c1, put into c2
+
+note the k1th value will be the factorial
+pick rows k1 to k1 of c2, put into c3
+
+fprint c3 
+(&quot;answer = &quot;, i4)
+stop
+```
+
+!! Output
+
+```
+-- note calculate factorial of value in k1
+-- define 5 into k1
+-- generate the first k1 integers into c1
+-- parproduct of c1, put into c2
+-- note the k1th value will be the factorial
+-- pick rows k1 to k1 of c2, put into c3
+-- fprint c3 
+   answer =  120
+-- stop
+*** Execution halted ***
+```</pre>
+</div>
+<div created="20210103184508863" creator="TABcentral" modified="20210103185209955" modifier="TABcentral" tags="Manipulations" title="PARSUMS">
+<pre>''PARS''UMS (PARTIAL SUMS) OF ''C'', PUT INTO ''C''
+
+The $$i$$th  row of the second column contains the sum of the first $$i$$ rows of the first column. 
+
+!! Example
+
+```
+set the following into c1
+1, 3, -1, 2, 0, 1
+parsums of c1, put into c2
+print c1, c2
+```
+
+!! Output
+
+```
+-- set the following into c1
+   Column       C1    
+   Count        6     
+              1         3        -1         2 . . . 
+-- parsums of c1, put into c2
+-- print c1, c2
+   Column       C1          C2    
+   Count        6           6     
+   
+   Row    1           1           1
+          2           3           4
+          3          -1           3
+          4           2           5
+          5           0           5
+          6           1           6
+*** Execution halted ***
+```</pre>
+</div>
+<div created="20210103184033813" creator="TABcentral" modified="20210103184344935" modifier="TABcentral" tags="Manipulations" title="PICK">
+<pre>''PICK'' ROWS ''K'' TO ''K'' OF ''C'', PUT INTO ''C''
+
+!! Example
+
+```
+set the following into c1
+32 67 13 3 -5 2 100
+pick rows 3 to 6 of c1, put into c2
+print c1, c2
+stop
+```
+
+!! Output
+
+```
+-- set the following into c1
+   Column       C1    
+   Count        7     
+             32        67        13         3 . . . 
+-- pick rows 3 to 6 of c1, put into c2
+-- print c1, c2
+   Column       C1          C2    
+   Count        7           4     
+   
+   Row    1          32          13
+          2          67           3
+          3          13          -5
+          4           3           2
+          5          -5            
+          6           2            
+          7         100            
+-- stop
+*** Execution halted ***
+```
+</pre>
+</div>
 <div created="20201111003700792" creator="TABcentral" modified="20201111013021362" modifier="TABcentral" tags="PlotsAndHistograms" title="PLOT">
 <pre>* ''PLOT'' Y IN ''C'' VS X IN ''C'' 
 * ''PLOT'' Y IN ''C'' FROM ''K'' TO ''K'' VS X IN ''C'' FROM ''K'' TO ''K''
@@ -11822,8 +12002,12 @@ stop
                  72                 216                 360
 ```</pre>
 </div>
-<div caption="7. Plots and Histograms" created="20201109230718837" creator="TABcentral" modified="20201110235046957" modifier="TABcentral" tags="Contents" title="PlotsAndHistograms">
-<pre></pre>
+<div caption="7. Plots and Histograms" created="20201109230718837" creator="TABcentral" modified="20210103180947575" modifier="TABcentral" tags="Contents" title="PlotsAndHistograms">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'PlotsAndHistograms'  &quot;sort[title]&quot;&gt;&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div created="20201122174726029" creator="TABcentral" modified="20201123144153529" modifier="TABcentral" tags="RandomData" title="PRANDOM">
 <pre>''PRAN''DOM ''K'' OBSERVATIONS WITH LAMBDA = ''K'', PUT IN ''C''
@@ -11874,8 +12058,12 @@ By itself, `PRINT` restores automatic printing of read data suppressed by [[NOPR
 
 When columns are included,َ a report on  the columns are sent to the output.</pre>
 </div>
-<div caption="6. Printing and punching" created="20201108203214960" creator="TABcentral" modified="20201108203301695" modifier="TABcentral" tags="Contents" title="Printing">
-<pre></pre>
+<div caption="6. Printing and punching" created="20201108203214960" creator="TABcentral" modified="20210103181004664" modifier="TABcentral" tags="Contents" title="Printing">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'Printing'  &quot;sort[title]&quot;&gt;&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div created="20201109230041001" creator="TABcentral" modified="20201109230410871" modifier="TABcentral" tags="Printing" title="PUNCH">
 <pre>''PUNC''H THE VALUES IN COLUMNS ''C'', ..., ''C''
@@ -11884,8 +12072,12 @@ Punch out the rows of up to 4 columns in a virtual &quot;punch cards.&quot; If o
 
 Included for legacy purposes only.</pre>
 </div>
-<div caption="8. Random Data Generation" created="20201121174300496" creator="TABcentral" modified="20201121174349988" modifier="TABcentral" tags="Contents" title="RandomData">
-<pre></pre>
+<div caption="8. Random Data Generation" created="20201121174300496" creator="TABcentral" modified="20210103181033362" modifier="TABcentral" tags="Contents" title="RandomData">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'RandomData'  &quot;sort[title]&quot;&gt;&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div created="20201129211656122" creator="TABcentral" modified="20201129212553186" modifier="TABcentral" tags="Sorting" title="RANK">
 <pre>''RANK'' THE VALUES IN ''C'', PUT RANKS IN ''C''
@@ -12006,8 +12198,12 @@ stop
 *** Execution halted ***
 ```</pre>
 </div>
-<div caption="9. Sorting" created="20201128170840744" creator="TABcentral" modified="20201128170938899" modifier="TABcentral" tags="Contents" title="Sorting">
-<pre></pre>
+<div caption="9. Sorting" created="20201128170840744" creator="TABcentral" modified="20210103181048086" modifier="TABcentral" tags="Contents" title="Sorting">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'Sorting'  &quot;sort[title]&quot;&gt;&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div created="20201108195823660" creator="TABcentral" modified="20201108201438647" modifier="TABcentral" tags="EnteringNumbers" title="SUBSTITUTE">
 <pre>* ''SUBS''TITUTE THE NUMBER ''K'' INTO ROW ''K'' OF COLUMN ''C''

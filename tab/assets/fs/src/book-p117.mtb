@@ -1,0 +1,12 @@
+note sample program from pg. 117 of the _MINITAB Student Handbook_ 
+note by Ryan, Joiner and Ryan, Copyright 1976, Wadsworth Pub. Co.
+
+note The code as written expects the data file "cartoon.txt"
+note to be loaded and available on device 1.
+
+inunit 1
+read the cartoon data into c1-c9
+
+nscores of c5, put results into c10
+plot otis scores in c5 vs normal scores in c10
+stop
