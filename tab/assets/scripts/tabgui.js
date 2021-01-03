@@ -6,9 +6,18 @@ const NEWSOURCE = "note enter your tab source here";
 const btn = document.getElementById("infoBtn");
 const span = document.getElementsByClassName("close")[0];
 
+const SourceFSFiles = ["book1-1.mtb", "book1-3.mtb","book-p112.mtb","book-p115.mtb","book-p46.mtb","book-p68.mtb","book-p79.mtb","gravity.mtb"];
+const SourceFSPath = "assets/fs/src/";
+const DataFSFiles = ["blood.txt", "cartoon.txt","covid19.txt","drip.txt","examscores.txt","flam.txt","gradesA.txt","gravity.txt","integration.txt","pulse.txt","steel.txt"]; 
+const DataFSPath = "assets/fs/data/";
+
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   const modal = document.getElementById("myModal");
+  const fileModal = document.getElementById("file-content");
+  const infoModal = document.getElementById("info-content");
+  fileModal.style.display = "none";
+  infoModal.style.display = "block";
   modal.style.display = "flex";
 }
 
@@ -113,7 +122,7 @@ function getNodeIndex(mommy, daughter) {
 }
 
 /*
- * findNode(node) -- find  the index of the node and wheter or not it
+ * findNode(node) -- find  the index of the node and whether or not it
  * is a source file
  */
 function findNode(node) {
@@ -237,7 +246,7 @@ function printText(printResults=true) {
 }
 
 /*
- * myClick(o) -- reads to selecting an option from the dropdown
+ * srcClick(o) -- reads to selecting an option from the dropdown
  * menu (from right-clicking on an item in the file list)
  */
 function srcClick(o) {
@@ -285,16 +294,56 @@ function srcClick(o) {
 			document.getElementById("fileread").click();
 			break;
 		case "Open":
-			const [index, isSource] = findNode(ItemSelection);
-			const dir = "./assets/fs/" + (isSource) ? "src" : "data";
-			const fs = require('fs');
-			fs.readdir(dir, (err, files) => {
-				files.forEach(file => {
-					console.log(file);
-				});
-			})
+      const modal = document.getElementById("myModal");
+      const fileModal = document.getElementById("file-content");
+      const infoModal = document.getElementById("info-content");
+      const fsList = document.getElementById("fs-list");
+	    const[index, isSource] = findNode(ItemSelection);
+      theList = (isSource) ? SourceFSFiles : DataFSFiles;
+      fileModal.style.display = "block";
+      infoModal.style.display = "none";
+      modal.style.display = "flex";
+      fsList.innerHTML = "<ul>\n";
+      for (item of theList) {
+        fsList.innerHTML += "<li class='fs-item' onclick='loadFile(this)'>"+item+"</li>\n";
+      } 
+      fsList.innerHTML += "</ul>";
+//			const [index, isSource] = findNode(ItemSelection);
+//			const dir = "./assets/fs/" + (isSource) ? "src" : "data";
+//			const fs = require('fs');
+//			fs.readdir(dir, (err, files) => {
+//				files.forEach(file => {
+//					console.log(file);
+//				});
+//			})
 			break;
 		default:
 			break;
 	}
+}
+
+
+function loadFile(o) {
+  const modal = document.getElementById("myModal");
+	const[idx, isSource] = findNode(ItemSelection);
+  const path = (isSource) ? SourceFSPath : DataFSPath;
+  let input = o.innerHTML;
+
+  fetch(path + input)
+       .then(res => res.text())
+       .then(out => {
+           if (isSource) {
+             SourceFiles[idx].setValue(out);
+           } else {
+             DeviceFiles[idx].setValue(out);
+           }
+
+           if (ItemSelection.classList.contains("device")) {
+             input = ItemSelection.id.slice(-1) + "- " + input;
+           }
+           ItemSelection.innerText = input;
+       })
+       .catch(err => { throw err });
+
+  modal.style.display = "none";
 }

@@ -265,14 +265,39 @@ footer {
   margin: auto;
   padding: 0;
   border: none;
-  width: 85%;
-  height: 85%;
+  color: white;
+  background-color: var(--main-bg-color);
+}
+
+.fs-item {
+  cursor: pointer;
+  font-family: "Source Code Pro", "Courier", "Courier New", monospace;
+	font-size: 1.25rem;
+	font-style: normal;
+  width: 40%;
+}  
+
+.fs-item:hover {
+	background-color: var(--ui-highlight);
 }
 
 .docs {
   position: relative;
   top: -2rem;
   z-index: 7;
+}
+
+#info-content {
+  display: none;
+  width: 85%;
+  height: 85%;
+}
+
+#file-content {
+  padding: 2rem;
+  display: none;
+  width: 50%;
+  height: 50%;
 }
 
 /* The Close Button */
