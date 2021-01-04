@@ -25,12 +25,12 @@
 	<header>
 		<h1 class="maintitle">OpenTAB</h1>
 		
-			<button id="infoBtn" class="button top" onclick="infoWindow();"><i class="fa fa-info-circle fa-2x" title="Show OpenTAB documentation"></i></button>
+			<button id="infoBtn" class="button top" onclick="infoWindow();" title="Show OpenTAB documentation"><i class="fa fa-info-circle fa-2x"></i></button>
 	
 	</header>
 	<div class="filelist">
 		<div class="ui">
-			<span class="uiitem" onclick="addSource()">+</span>
+			<span class="uiitem" onclick="addSource()" title="Add source file">+</span>
 		</div>
 		<h3>Source Files</h3>
 		<ul class="files" id="source">
@@ -54,12 +54,12 @@
 	<div id="code">
 		<h2>Code
 		<div class="controls">
-		<button class="button run" onclick="run();"><i class="fa fa-play"></i></button>
-		<button class="button" onclick="editor.execCommand('showKeyboardShortcuts');"><i class="fa fa-question"></i></button>
-			<button class="button" onclick="editor.undo()"><i class="fa fa-undo"></i></button>
-			<button class="button" onclick="editor.redo()"><i class="fa fa-repeat"></i></button>
-			<button class="button" onclick="editor.setValue('')"><i class="fa fa-eraser"></i></button>
-			<button class="button" onclick="printText(false);"><i class="fa fa-print"></i></button>
+		<button class="button run" onclick="run();" title="Run the code in the editor"><i class="fa fa-play"></i></button>
+		<button class="button" onclick="editor.execCommand('showKeyboardShortcuts');" title="Toggle keyboard shortcuts for the editor"><i class="fa fa-question"></i></button>
+			<button class="button" onclick="editor.undo()" title="Undo"><i class="fa fa-undo"></i></button>
+			<button class="button" onclick="editor.redo()" title="Redo"><i class="fa fa-repeat"></i></button>
+			<button class="button" onclick="editor.setValue('')" title="Clear the editor"><i class="fa fa-eraser"></i></button>
+			<button class="button" onclick="printText(false);"><i class="fa fa-print" title="Print the contents of the editor"></i></button>
 		</div></h2>
 	<pre id="tab" autofocus>
 	 </pre>
@@ -67,7 +67,7 @@
 	<div id="results">
 		<h2>Results
 		<div class="controls">
-			<button class="button" onclick="printText(true);"><i class="fa fa-print" title="Send output to printer"></i></button>
+			<button class="button" onclick="printText(true);" title="Send output to printer"><i class="fa fa-print"></i></button>
 		</div></h2>
 		<div id="output" readonly>
 		</div>
@@ -78,12 +78,12 @@
 
   <!-- Modal content -->
   <div id="info-content" class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close" onclick="closeModal()">&times;</span>
     <iframe class="docs" src="otdocs.html" height="100%" width="100%" frameborder="0"></iframe>
   </div>
 
   <div id="file-content" class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close" onclick="closeModal()">&times;</span>
     <h2>Load file</h2>
     <div id="fs-list">This is a test</div>
   </div>

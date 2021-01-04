@@ -3,16 +3,17 @@ const EditSession = ace.require("ace/edit_session").EditSession;
 const SourceNode = document.getElementById("source");
 const DeviceNode = document.getElementById("dev");
 const NEWSOURCE = "note enter your tab source here";
-const btn = document.getElementById("infoBtn");
-const span = document.getElementsByClassName("close")[0];
 
 const SourceFSFiles = ["book1-1.mtb", "book1-3.mtb","book-p112.mtb","book-p115.mtb","book-p117.mtb","book-p37.mtb","book-p43.mtb","book-p46.mtb","book-p68.mtb","book-p79.mtb","gravity.mtb"];
 const SourceFSPath = "assets/fs/src/";
 const DataFSFiles = ["blood.txt", "cartoon.txt","covid19.txt","drip.txt","examscores.txt","flam.txt","gradesA.txt","gravity.txt","integration.txt","pulse.txt","steel.txt"]; 
 const DataFSPath = "assets/fs/data/";
 
-// When the user clicks the button, open the modal
-btn.onclick = function() {
+/*
+ *  infoWindow() -- opens the modal and the displays the OpenTAB
+ *  documentation
+ */
+function infoWindow() {
   const modal = document.getElementById("myModal");
   const fileModal = document.getElementById("file-content");
   const infoModal = document.getElementById("info-content");
@@ -21,8 +22,11 @@ btn.onclick = function() {
   modal.style.display = "flex";
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+/*
+ *  closeModal() -- close the modal dialog used for the file modal
+ *  and the info box. Activated by the "X" button in the modal.
+ */
+function closeModal() {
   const modal = document.getElementById("myModal");
   modal.style.display = "none";
 }
@@ -308,14 +312,6 @@ function srcClick(o) {
         fsList.innerHTML += "<li class='fs-item' onclick='loadFile(this)'>"+item+"</li>\n";
       } 
       fsList.innerHTML += "</ul>";
-//			const [index, isSource] = findNode(ItemSelection);
-//			const dir = "./assets/fs/" + (isSource) ? "src" : "data";
-//			const fs = require('fs');
-//			fs.readdir(dir, (err, files) => {
-//				files.forEach(file => {
-//					console.log(file);
-//				});
-//			})
 			break;
 		default:
 			break;
@@ -323,6 +319,10 @@ function srcClick(o) {
 }
 
 
+/*
+ * loadfile(o) - loads a file from the OpenTAB filesystem, where 'o' is
+ * the link with the filename that was clicked on.
+ */
 function loadFile(o) {
   const modal = document.getElementById("myModal");
 	const[idx, isSource] = findNode(ItemSelection);

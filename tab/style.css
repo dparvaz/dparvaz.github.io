@@ -83,7 +83,6 @@ p {
 
 #tab {
 		margin: 0;	
-    overflow: scroll;
     height: 70vh;
     width: 40vw;
 }
