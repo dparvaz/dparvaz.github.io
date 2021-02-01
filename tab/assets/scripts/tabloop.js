@@ -207,6 +207,9 @@ function run() {
 				case "ORDE":
 					result = orderCol(args);
 					break;
+				case "CONV":
+					result = convert(args);
+					break;
 				case "SORT":
 					result = sortCol(args);
 					break;

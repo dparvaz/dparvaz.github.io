@@ -18,7 +18,7 @@ let keywords = "STOP|ADD|SUBT\\w*|MULT\\w*|DIVI\\w*|MAXR\\w*|MINR\\w*|"+
                "FSET\\w*|FPRI\\w*|PRIN\\w*|NOPR\\w*|BRIE\\w*|NOBR\\w*|"+
                "CONS\\w*|NOCO\\w*|INUN\\w*|OUTU\\w*|NEWP\\w*|AOVO\\w*|"+
                "ONEW\\w*|TWOW\\w*|LPLO\\w*|UNIC\\w*|NOUN\\w*|CHIS\\w*|"+
-		           "TABL\\w*|CONT\\w*|ALPH\\w*|RECO\\w*|COLU\\w*"; 
+		           "TABL\\w*|CONT\\w*|ALPH\\w*|RECO\\w*|COLU\\w*|CONV\\w*"; 
     // var keywordMapper = this.createKeywordMapper({
     //     "keyword": keywords
     // }, "identifier", true);

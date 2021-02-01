@@ -270,6 +270,46 @@ function joinVals(args) {
 }
 
 /*
+ * convert(args) -- using a conversion table of two columns (from, to),
+ * convert the values of one table into another
+ */
+function convert(args) {
+  const putIn = args.pop();
+
+  args = derefArgs(args);
+  if (args === true) return true;
+
+  const fromCol = args[0][1];
+  const toCol = args[1][1];
+  const values = args[2][1];
+  
+  if (!(getColLength(fromCol)==getColLength(toCol)&&getColLength(toCol)>0)) {
+    throwError(ERR_COLS_NE);
+  }
+ 
+  let outArray = [];
+
+  if (getColLength(values) == 0) throwError(ERR_NULL_COL);
+  if (getColLength(values) == -1) {
+    const singleTerm = Columns[values];
+    Columns[putIn[1]] = singleTerm;
+    let search = Columns[fromCol].indexOf(singleTerm);
+    if (search > -1) Columns[putIn[1]] = Columns[toCol][search];
+    return false;
+  }
+
+  for (let val of Columns[values]) {
+    let out = val;
+    let search = Columns[fromCol].indexOf(val);
+    if (search > -1) out = Columns[toCol][search];
+    outArray.push(out);
+  }
+  
+  Columns[putIn[1]] = outArray;
+  return false;
+}
+
+/*
  * setDevice(args,comm) -- set the input or output device for reading and
  * printing
  */
@@ -542,6 +582,8 @@ function printCols(args, maxLimit=null, singleCol=null) {
 		let col = args[0][1];
 		let limit;
     const len = getColLength(col);
+    if (len == 0) return false;
+
 		const theDP = Math.min(Rounding, maxDP(Columns[col]));
 		limit = (maxLimit) ?  Math.min(len, maxLimit) : len;
     if (limit == -1) limit = 1;
@@ -871,7 +913,7 @@ function chooseOmit(args, choose=true) {
 	let tarRef = args[idx][1];
 	let target = args.slice(idx+1);
 	let refLen = getColLength(ref);
-	
+
 	// make sure the reference column isn't empty or holding a constant 
 	if (refLen < 1) {
 		throwError(ERR_TOO_FEW);
@@ -903,8 +945,9 @@ function chooseOmit(args, choose=true) {
 		}
 	}
 
+  Columns[tarRef] = refArr;
+
 	if (copied[0] != null) {
-		Columns[tarRef] = refArr;
 		for (let i = 0; i < target.length; i++) {
 			Columns[target[i][1]] = copied[i];
 		}

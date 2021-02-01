@@ -433,9 +433,13 @@ Error message and password prompt
 
 <li>BTRIALS</li>
 
+<li>CHOOSE</li>
+
 <li>COLUMNS</li>
 
 <li>Contents</li>
+
+<li>CONVERT</li>
 
 <li>cover.jpg</li>
 
@@ -477,6 +481,8 @@ Error message and password prompt
 
 <li>NRANDOM</li>
 
+<li>OMIT</li>
+
 <li>ORDER</li>
 
 <li>PARPRODUCT</li>
@@ -502,6 +508,8 @@ Error message and password prompt
 <li>RANK</li>
 
 <li>READ</li>
+
+<li>RECODE</li>
 
 <li>SAMPLE</li>
 
@@ -10146,14 +10154,14 @@ Error message and password prompt
 <div created="20201111072051850" creator="TABcentral" modified="20201227215149104" modifier="TABcentral" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20201108194729244" creator="TABcentral" modified="20201228051712617" modifier="TABcentral" title="$:/state/toc/Contents-EnteringNumbers-1843068618">
+<div created="20201108194729244" creator="TABcentral" modified="20210130151731994" modifier="TABcentral" title="$:/state/toc/Contents-EnteringNumbers-1843068618">
 <pre>close</pre>
 </div>
 <div created="20201108205153079" creator="TABcentral" modified="20201108205233804" modifier="TABcentral" title="$:/state/toc/Contents-Fortran-1843068618">
 <pre>open</pre>
 </div>
-<div created="20210103184409771" creator="TABcentral" modified="20210103190302317" modifier="TABcentral" title="$:/state/toc/Contents-Manipulations-1843068618">
-<pre>close</pre>
+<div created="20210103184409771" creator="TABcentral" modified="20210130153327914" modifier="TABcentral" title="$:/state/toc/Contents-Manipulations-1843068618">
+<pre>open</pre>
 </div>
 <div created="20201111003741364" creator="TABcentral" modified="20201228055156410" modifier="TABcentral" title="$:/state/toc/Contents-PlotsAndHistograms-1843068618">
 <pre>close</pre>
@@ -10173,7 +10181,7 @@ Error message and password prompt
 <div created="20201108172033979" creator="T" modified="20201108172044938" modifier="TABcentra" title="$:/status/UserName">
 <pre>TABcentral</pre>
 </div>
-<div created="20210103180843765" creator="TABcentral" list="[[1. Introduction]]" modified="20210103190530244" modifier="TABcentral" title="$:/StoryList">
+<div created="20210103180843765" creator="TABcentral" list="CONVERT RECODE CHOOSE JOIN [[3. Notation convention]] PICK Manipulations OMIT [[1. Introduction]]" modified="20210130152045630" modifier="TABcentral" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11419,6 +11427,57 @@ stop
 *** Execution halted ***
 ```</pre>
 </div>
+<div created="20210130152147197" creator="TABcentral" modified="20210130153209632" modifier="TABcentral" tags="Manipulations" title="CHOOSE">
+<pre>* ''CHOO''SE ROWS WITH ''K'' IN ''C [''CORRESPONDING ROWS OF ''C'',... ''C ]'', PUT INTO ''C'' '''[''CORRESPONDING ROWS OF ''C'',... ''C ]''
+* ''CHOO''SE ROWS WITH VAL;UES BETWEEN ''K'' AND ''K'' IN ''C [''CORRESPONDING ROWS OF ''C'',... ''C ]'', PUT INTO ''C'' ''[''CORRESPONDING ROWS OF ''C'',... ''C ]''
+
+The inverse effect of [[OMIT]]
+
+!! Example
+
+```
+read the following values into c1-c4
+1  23  14   7
+0  18  25   6
+2  32   4  11
+1  16  48  10
+0  37  19   4
+2  43  76  25
+choose rows with 0 in c1, corrsp. rows in c2-c4, put into c11, corres. rows in c12-c14
+choose rows between 1 and 2 in c1, put into c21
+print c11-c14
+print c21
+stop
+```
+
+!! Output
+
+```
+-- read the following values into c1-c4
+   Column       C1          C2          C3          C4    
+   Count        6           6           6           6     
+   
+   Row    1           1          23          14           7
+          2           0          18          25           6
+          3           2          32           4          11
+          4           1          16          48          10
+      . . .
+-- choose rows with 0 in c1, corrsp. rows in c2-c4, put into c11, corres. rows in c12-c14
+-- choose rows between 1 and 2 in c1, put into c21
+-- print c11-c14
+   Column      C11         C12         C13         C14    
+   Count        2           2           2           2     
+   
+   Row    1           0          18          25           6
+          2           0          37          19           4
+-- print c21
+   Column      C21    
+   Count        4     
+              1         2         1         2
+-- stop
+*** Execution halted ***
+```</pre>
+</div>
 <div created="20201114191337923" creator="TABcentral" modified="20201114191859522" modifier="TABcentral" tags="Printing" title="COLUMNS">
 <pre>''COLU''MNS PRINTED = ''K''
 
@@ -11430,6 +11489,58 @@ The default  value is 6, which looks good on a sheet of letter paper in portrait
 &lt;&lt;toc-selective-expandable 'Contents'  &quot;sort[title]&quot;&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div created="20210130181618799" creator="TABcentral" modified="20210201054041714" modifier="TABcentral" tags="Manipulations" title="CONVERT">
+<pre>''CONV''ERT USING TABLE IN ''C C'', CONVERT ''C'' INTO ''C'' 
+
+Was used in MIniTAB for converting numeric to alphanumeric and vice versa. Included here for legacy compatibility/ 
+
+!! Example
+
+```
+read the following conversion table into c1, c2
+# ASCII value   Enumerated value
+     65                1
+     66                2 
+     67                3
+
+set the following ASCII values into c5
+65  67  66  66  63  65
+
+convert using the table in c1 &amp; c2, the values in c5, put in c6
+print c5, c6
+
+stop
+```
+
+!! Output
+
+```
+-- read the following conversion table into c1, c2
+   Column       C1          C2    
+   Count        3           3     
+   
+   Row    1          65           1
+          2          66           2
+          3          67           3
+      . . .
+-- set the following ASCII values into c5
+   Column       C5    
+   Count        5     
+             65        67        66        66 . . . 
+-- convert using the table in c1 &amp; c2, the values in c5, put in c6
+-- print c5, c6
+   Column       C5          C6    
+   Count        5           5     
+   
+   Row    1          65           1
+          2          67           3
+          3          66           2
+          4          66           2
+          5          65           1
+-- stop
+*** Execution halted ***
+```</pre>
 </div>
 <div title="cover.jpg" type="image/jpeg">
 <pre>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</pre>
@@ -11831,6 +11942,57 @@ stop
 *** Execution halted ***
 ```</pre>
 </div>
+<div created="20210105141406744" creator="TABcentral" modified="20210130153221332" modifier="TABcentral" tags="Manipulations" title="OMIT">
+<pre>* ''OMIT'' ROWS WITH ''K'' IN ''C [''CORRESPONDING ROWS OF ''C'',... ''C ]'', PUT INTO ''C'' '''[''CORRESPONDING ROWS OF ''C'',... ''C ]''
+* ''OMIT'' ROWS WITH VAL;UES BETWEEN ''K'' AND ''K'' IN ''C [''CORRESPONDING ROWS OF ''C'',... ''C ]'', PUT INTO ''C'' ''[''CORRESPONDING ROWS OF ''C'',... ''C ]''
+
+The inverse effect of [[CHOOSE]]
+
+!! Example
+
+```
+read the following values into c1-c4
+1  23  14   7
+0  18  25   6
+2  32   4  11
+1  16  48  10
+0  37  19   4
+2  43  76  25
+omit rows between 1 and 2 in c1, corrsp. rows in c2-c4, put into c11, corres. rows in c12-c14
+omit rows with 0 in c1, put into c21
+print c11-c14
+print c21
+stop
+```
+
+!! Output
+
+```
+-- read the following values into c1-c4
+   Column       C1          C2          C3          C4    
+   Count        6           6           6           6     
+   
+   Row    1           1          23          14           7
+          2           0          18          25           6
+          3           2          32           4          11
+          4           1          16          48          10
+      . . .
+-- omit rows between 1 and 2 in c1, corrsp. rows in c2-c4, put into c11, corres. rows in c12-c14
+-- omit rows with 0 in c1, put into c21
+-- print c11-c14
+   Column      C11         C12         C13         C14    
+   Count        2           2           2           2     
+   
+   Row    1           0          18          25           6
+          2           0          37          19           4
+-- print c21
+   Column      C21    
+   Count        4     
+              1         2         1         2
+-- stop
+*** Execution halted ***
+```</pre>
+</div>
 <div created="20201128171322696" creator="TABcentral" modified="20201128171848919" modifier="TABcentral" tags="Sorting" title="ORDER">
 <pre>''ORDE''R COL ''C'' ''[''AND ''C''...'']'', PUT INTO ''C'' ''[''AND ''C''...'']''
 
@@ -12117,6 +12279,47 @@ stop
 <pre>''READ'' THE FOLLOWING DATA INTO ''C'', ...''C''
 
 Data lines follow — one line per row. `READ` will  ignore blank lines and lines beginning with `#` (since [[OpenTab]] ignores everything after a `#`, a line beginning in this way is effectively a blank line).</pre>
+</div>
+<div created="20210130165241286" creator="TABcentral" modified="20210130170514607" modifier="TABcentral" tags="Manipulations" title="RECODE">
+<pre>* ''RECO''DE  THE VALUE ''K'' IN ''C'' TO ''K'', PUT INTO ''C''
+* ''RECO''DE  THE VALUES ''K'' TO ''K'' IN ''C'' TO ''K'', PUT INTO ''C''
+
+!! Example
+
+```
+set the following values into c1
+1 4 5 0 3 0 5 6 4 
+recode rows with 0 in c1 to 99, put in c2
+recode rows with 4 to 6 in c1 to -1, put in c2
+print c1-c3
+stop
+```
+
+!! Output
+
+```
+-- set the following values into c1
+   Column       C1    
+   Count        9     
+              1         4         5         0 . . . 
+-- recode rows with 0 in c1 to 99, put in c2
+-- recode rows with 4 to 6 in c1 to -1, put in c2
+-- print c1-c3
+   Column       C1          C2          C3    
+   Count        9           9           0     
+   
+   Row    1           1           1            
+          2           4          -1            
+          3           5          -1            
+          4           0           0            
+          5           3           3            
+          6           0           0            
+          7           5          -1            
+          8           6          -1            
+          9           4          -1            
+-- stop
+*** Execution halted ***
+```</pre>
 </div>
 <div created="20201123072450231" creator="TABcentral" modified="20201123144054117" modifier="TABcentral" tags="RandomData" title="SAMPLE">
 <pre>''SAMP''LE  ''K''  ROWS FROM C, ''[ C'', ''C''... ''C ]'' PUT INTO C, ''[ C'', ''C''... ''C ]''
