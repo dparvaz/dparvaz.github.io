@@ -124,7 +124,7 @@ function formatNumberLength(num, width, dp) {
 	if (num == Integer(num)) {
 		z = num.toString() + " ".repeat(dp);
 	} else {
-		z = num.toFixed(dp);
+		z = round(num, dp).toString();
 	}
 		
 	return z.padStart(width, " ");

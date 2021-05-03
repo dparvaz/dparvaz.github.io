@@ -1,0 +1,26 @@
+note Minitab code found in page 177, 
+note _Statistics in language studies_ by Woods, A. et al. 
+note Copyright CUP 1986
+
+note unicode uncomment this line if you want Unicode graphics
+
+read x into c1, y into c2
+
+# -----------------
+# depth  flow rate
+# -----------------
+  0.34    0.636 
+  0.29    0.319
+  0.28    0.734
+  0.42    1.327
+  0.29    0.487
+  0.41    0.924
+  0.76    7.350
+  0.73    5.890
+  0.46    1.979
+  0.40    1.124
+
+plot flow rate c2 vs depth c1
+multiply c1 by c1 put in c3 (x-squared)
+regress c2 using 2 predictors c1 and c3
+stop

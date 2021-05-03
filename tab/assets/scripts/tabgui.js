@@ -4,7 +4,7 @@ const SourceNode = document.getElementById("source");
 const DeviceNode = document.getElementById("dev");
 const NEWSOURCE = "note enter your tab source here";
 
-const SourceFSFiles = ["book1-1.mtb", "book1-3.mtb","book-p112.mtb","book-p115.mtb","book-p117.mtb","book-p37.mtb","book-p43.mtb","book-p46.mtb","book-p68.mtb","book-p79.mtb","gravity.mtb"];
+const SourceFSFiles = ["book1-1.mtb", "book1-3.mtb","book-p112.mtb","book-p115.mtb","book-p117.mtb","book-p177.mtb","book-p37.mtb","book-p43.mtb","book-p46.mtb","book-p68.mtb","book-p79.mtb","gravity.mtb"];
 const SourceFSPath = "assets/fs/src/";
 const DataFSFiles = ["blood.txt", "cartoon.txt","covid19.txt","drip.txt","examscores.txt","flam.txt","gradesA.txt","gravity.txt","integration.txt","pulse.txt","steel.txt"]; 
 const DataFSPath = "assets/fs/data/";
