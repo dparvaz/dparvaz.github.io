@@ -1117,7 +1117,7 @@ function linearRegression(args) {
 	// coefficient table
   feedback("                                Std. Err.       T-Ratio");	
 	feedback("                 Coefficient     of Coeff      Coeff/SE");
-	for (let i = startIndex; i < k+startIndex; i++) {
+	for (let i = (NoIntercept) ? startIndex : 0; i < k+startIndex; i++) {
 		let s;
 		if (NoIntercept) {
 			s = "x"+subscript(i+addOne) + "       ";
