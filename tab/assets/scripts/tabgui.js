@@ -6,7 +6,7 @@ const NEWSOURCE = "note enter your tab source here";
 
 const SourceFSFiles = ["book1-1.mtb", "book1-3.mtb","book-p112.mtb","book-p115.mtb","book-p117.mtb","book-p177.mtb","book-p37.mtb","book-p43.mtb","book-p46.mtb","book-p68.mtb","book-p79.mtb","gravity.mtb"];
 const SourceFSPath = "assets/fs/src/";
-const DataFSFiles = ["blood.txt", "cartoon.txt","covid19.txt","drip.txt","examscores.txt","flam.txt","gradesA.txt","gravity.txt","integration.txt","pulse.txt","steel.txt"]; 
+const DataFSFiles = ["blood.txt", "cartoon.txt","covid20.txt","drip.txt","examscores.txt","flam.txt","gradesA.txt","gravity.txt","integration.txt","pulse.txt","steel.txt","iris.txt"]; 
 const DataFSPath = "assets/fs/data/";
 
 /*
@@ -298,24 +298,24 @@ function srcClick(o) {
 			document.getElementById("fileread").click();
 			break;
 		case "Open":
-      const modal = document.getElementById("myModal");
-      const fileModal = document.getElementById("file-content");
-      const infoModal = document.getElementById("info-content");
-      const fsList = document.getElementById("fs-list");
-	    const[index, isSource] = findNode(ItemSelection);
-      theList = (isSource) ? SourceFSFiles : DataFSFiles;
-      fileModal.style.display = "block";
-      infoModal.style.display = "none";
-      modal.style.display = "flex";
-      fsList.innerHTML = "<ul>\n";
-      for (item of theList) {
-        fsList.innerHTML += "<li class='fs-item' onclick='loadFile(this)'>"+item+"</li>\n";
-      } 
-      fsList.innerHTML += "</ul>";
-			break;
-		default:
-			break;
-	}
+                        const modal = document.getElementById("myModal");
+                        const fileModal = document.getElementById("file-content");
+                        const infoModal = document.getElementById("info-content");
+                        const fsList = document.getElementById("fs-list");
+                              const[index, isSource] = findNode(ItemSelection);
+                        theList = (isSource) ? SourceFSFiles : DataFSFiles;
+                        fileModal.style.display = "block";
+                        infoModal.style.display = "none";
+                        modal.style.display = "flex";
+                        fsList.innerHTML = "<ul>\n";
+                        for (item of theList) {
+                          fsList.innerHTML += "<li class='fs-item' onclick='loadFile(this)'>"+item+"</li>\n";
+                        } 
+                        fsList.innerHTML += "</ul>";
+                        break;
+                default:
+                        break;
+        }
 }
 
 
